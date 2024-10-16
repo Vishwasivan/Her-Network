@@ -59,3 +59,21 @@ function closeSkil() {
     const skillsbox = document.getElementById('skillsContainer');
     skillsbox.style.display = 'none';
 }
+
+
+
+       // Mark Task as Completed
+       function markCompleted(button) {
+        const task = button.parentElement;
+        task.classList.add('task-completed');
+        button.disabled = true;
+        button.textContent = 'Completed';
+        showToast('Task marked as completed!');
+    }
+
+    // Dismiss Notification
+    function dismissNotification(button) {
+        const notification = button.parentElement;
+        notification.remove();
+        showToast('Notification dismissed!');
+    }

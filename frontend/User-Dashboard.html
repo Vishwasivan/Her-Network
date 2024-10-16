@@ -35,7 +35,7 @@
                 <a href=""><i class="fa-solid fa-list-check"></i>Post Task </a>
                 <a href=""><i class="fa-regular fa-eye"></i>View Tasks</a>
                 <a href=""><i class="fa-solid fa-message"></i>Messages</a>
-                <a href=""><i class="fa-solid fa-message"></i>Messages</a>
+                <a href=""><i class="fa-regular fa-comment"></i>Feedback</a>
             </div>
             <div class="prof-settings">
                 <a style="text-decoration: none; color:#ac74fc;" href="login.html">
@@ -47,69 +47,60 @@
         <div class="activity-con">
 
             <div class="active-tittle">
-                <h2>Dashboard</h2>
+                <h2 style="margin: 20px 0px 0px 0px;">Dashboard</h2>
             </div>
 
             <div class="dash-img">
-                <img src="static/Assets/professional-secretary-organizing-documents-with-woman-holding-pen-briefcase_1324816-27003.avif"
+                <img src="static/Assets/BNG/female-student-presenting-report-graph-class-cartoon-person-presents-report-school_24797-1558-removebg-preview.png"
                     alt="">
+                <img src="static/Assets/BNG/2.png" alt="">
             </div>
 
+
             <div class="active-task">
-                <h2>Active Tasks</h2>
-                <ul id="task-list">
-                    <li>
-                        <span>Babysitting - <strong>In Progress</strong></span>
-                        <span class="priority high-priority">High</span>
-                        <div class="progress-bar">
-                            <div class="progress" style="width: 60%;"></div>
+                <h2 style="margin: 0px;">Active Tasks</h2>
+                <div class="tasks">
+                    <div class="task">
+                        <div class="prograss-taskname">
+                            <p>babysitting</p>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 60%;"></div>
+                            </div>
                         </div>
-                        <button onclick="markCompleted(this)">Mark as Completed</button>
-                    </li>
-                    <li>
-                        <span>Cook Meals for Event - <strong>Completed</strong></span>
-                        <span class="priority medium-priority">Medium</span>
-                        <button onclick="markCompleted(this)" disabled>Completed</button>
-                    </li>
-                </ul>
+                        <div class="task-btn">
+                            <button onclick="markCompleted(this)">Mark as Completed</button>
+                        </div>
+                    </div>
+                    <div class="task">
+                        <div class="prograss-taskname">
+                            <p>Cook Meals for Event</p>
+                        </div>
+                        <div class="task-btn">
+                            <button onclick="markCompleted(this)" disabled>Completed</button>
+                        </div>
+                    </div>
+                </div>
             </div>
 
 
             <div class="active-footer">
                 <div class="quvic-links">
-                    <!-- Quick Links Section -->
-                    <section id="quick-links-section">
-                        <h2 onclick="toggleSection('quick-links-section')">
-                            Quick Links <span>&#9660;</span>
-                        </h2>
-                        <button onclick="postTask()">Post New Task</button>
-                        <button onclick="listService()">List a Service</button>
-                    </section>
+                    <h2 style="margin: 0px;">Quick Links</h2>
+                    <button onclick="postTask()">Post New Task</button>
+                    <button onclick="listService()">List a Service</button>
                 </div>
 
                 <div class="notivication">
-                    <section id="notifications-section">
-                        <h2 onclick="toggleSection('notifications-section')">
-                          Notifications <span>&#9660;</span>
-                        </h2>
-                        <ul id="notification-list">
-                          <li>
-                            You have a new message from Sarah (10:30 AM).
-                            <button onclick="dismissNotification(this)">Dismiss</button>
-                          </li>
-                          <li>
-                            Emma accepted your babysitting task (Yesterday, 4:45 PM).
-                            <button onclick="dismissNotification(this)">Dismiss</button>
-                          </li>
-                        </ul>
-                      </section>
+                    <h2 style="margin: 0px;">Notifications</h2>
+                    <div class="mgs">
+                        <p>You have a new message from Sarah (10:30 AM).  
+                             <button onclick="dismissNotification(this)">Dismiss</button></p>
+                        <p>Emma accepted your babysitting task (Yesterday, 4:45 PM).  
+                             <button onclick="dismissNotification(this)">Dismiss</button></p>
+                    </div>
                 </div>
             </div>
-
-
         </div>
-
-
 
 
         <div class="User-prof">
@@ -123,58 +114,13 @@
                     <h1 style="margin: 0px;">User Name</h1>
                     <p><i class="fa-solid fa-envelope"></i>user@gmail.com</p>
                 </div>
-                <button>
+                <button onclick="document.location='index.html'">
                     <h4 style="margin: 0px;"><i class="fa-solid fa-right-from-bracket"></i>LOGOUT</h4>
                 </button>
 
             </div>
         </div>
     </div>
-
-
-
-
-    <script>
-        // Toggle Sections
-        function toggleSection(sectionId) {
-            const section = document.getElementById(sectionId);
-            section.classList.toggle('collapsed');
-        }
-
-        // Mark Task as Completed
-        function markCompleted(button) {
-            const task = button.parentElement;
-            task.classList.add('task-completed');
-            button.disabled = true;
-            button.textContent = 'Completed';
-            showToast('Task marked as completed!');
-        }
-
-        // Dismiss Notification
-        function dismissNotification(button) {
-            const notification = button.parentElement;
-            notification.remove();
-            showToast('Notification dismissed!');
-        }
-
-        // Show Toast Notification
-        function showToast(message) {
-            const toast = document.getElementById('toast');
-            toast.textContent = message;
-            toast.classList.add('show');
-            setTimeout(() => toast.classList.remove('show'), 3000);
-        }
-
-        // Post Task Example Function
-        function postTask() {
-            alert('Navigating to Post Task page!');
-        }
-
-        // List Service Example Function
-        function listService() {
-            alert('Navigating to List Service page!');
-        }
-    </script>
 
 </body>
 
