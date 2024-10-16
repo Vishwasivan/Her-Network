@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Her Network</title>
@@ -15,18 +16,14 @@
     <script src="https://kit.fontawesome.com/a7e1cdcb19.js" crossorigin="anonymous"></script>
 
 
-    <!-- style-sheet -->
-    <link rel="stylesheet" href="static/style.css">
-
-    <!-- script -->
-    <script src="static/script.js"></script>
+   
 </head>
 <body>
 
 <div class="dash-main">
     <div class="slid-bar">
         <div class="sild-logo">
-            <img src="static/Assets/logo.png" alt="">
+            <img src="{% static 'Assets/logo.png' %}" alt="">
             <h3>Her Network</h3>
         </div>
         <div class="slid-list">
@@ -52,7 +49,7 @@
         <div class="prof-info">
 
             <div>
-                <img src="static/Assets/User-Profile-pic.jpg" alt="">
+                <img src="{% static 'Assets/User-Profile-pic.jpg' %}" alt="">
                 <h1 style="margin: 0px;">User Name</h1>
                 <p><i class="fa-solid fa-envelope"></i>user@gmail.com</p>
             </div>
@@ -63,6 +60,10 @@
         </div>
     </div>
 </div>
-    
+     <!-- style-sheet -->
+     <link rel="stylesheet" href="{% static 'style.css' %}">
+
+     <!-- script -->
+     <script src="{% static 'script.js' %}"></script>
 </body>
 </html>

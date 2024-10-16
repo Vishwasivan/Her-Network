@@ -2,10 +2,11 @@
 <html lang="en">
 
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Her Network</title>
-    <link rel="icon" type="image/x-icon" href="static/Assets/logo.png">
+    <link rel="icon" type="image/x-icon" href="{% static 'static/Assets/logo.png' %}">
 
     <!-- google-fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,12 +18,7 @@
     <script src="https://kit.fontawesome.com/a7e1cdcb19.js" crossorigin="anonymous"></script>
 
 
-    <!-- style-sheet -->
-    <link rel="stylesheet" href="static/style.css">
-
-    <!-- script -->
-    <script src="static/script.js"></script>
-
+   
 
 </head>
 
@@ -31,7 +27,7 @@
     <!-- nav-bar -->
     <div class="nav-main">
         <div class="nav-logo">
-            <img src="static/Assets/logo.png" alt="">
+            <img src="{% static 'Assets/logo.png' %}" alt="">
         </div>
         <div class="nav-links">
             <h2><a href=""><i class="fa-solid fa-house"></i>Home</a></h2>
@@ -69,7 +65,7 @@
                 <em>Join the network, share your skills, and connect with women like you.</em>
             </p>
             <div>
-                <button style="margin: 0px 20px 0px 0px;"><a href="login.html" style="text-decoration: none; color: aliceblue;">
+                <button style="margin: 0px 20px 0px 0px;"><a href="/login" style="text-decoration: none; color: aliceblue;">
                         <h3 style="margin: 0px 0px 0px 0px; ">Empower & <br> Earn
                             with Your Skills</h3>
                     </a></button>
@@ -80,11 +76,16 @@
 
         </div>
         <div class="Welcome-img">
-            <img src="static/Assets/home.jpg" alt="">
+            <img src="{% static 'Assets/home.jpg' %}" alt="">
         </div>
 
     </div>
+     <!-- style-sheet -->
+     <link rel="stylesheet" href="{% static 'style.css' %}">
 
+     <!-- script -->
+     <script src="{% static 'script.js' %}"></script>
+ 
 
 </body>
 

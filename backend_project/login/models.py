@@ -7,7 +7,3 @@ class Login_detail(models.Model):
     role = models.CharField(max_length=10)
     skill = models.CharField(max_length=10)
     password = models.CharField( max_length=50,)
-
-#class Sign_in(models.Model):
-    
-
