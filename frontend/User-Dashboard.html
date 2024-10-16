@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,48 +22,160 @@
     <!-- script -->
     <script src="static/script.js"></script>
 </head>
+
 <body>
 
-<div class="dash-main">
-    <div class="slid-bar">
-        <div class="sild-logo">
-            <img src="static/Assets/logo.png" alt="">
-            <h3>Her Network</h3>
-        </div>
-        <div class="slid-list">
-           <a href=""><i class="fa-solid fa-list-check"></i>Post Task </a>
-            <a href=""><i class="fa-regular fa-eye"></i>View Tasks</a>
-            <a href=""><i class="fa-solid fa-message"></i>Messages</a>
-            <a href=""><i class="fa-solid fa-message"></i>Messages</a>
-        </div>
-        <div class="prof-settings">
-            <a style="text-decoration: none; color:#ac74fc;" href="login.html">
-                <i style="margin-right: 15px;" class="fa-solid fa-gear"></i>Profile Settings
-            </a>
-        </div>
-    </div>
-
-    <div class="activity-con">
-        helo
-    </div>
-    <div class="User-prof">
-        <div class="User-prof-titl">
-            <h2>My Profile</h2>
-        </div>
-        <div class="prof-info">
-
-            <div>
-                <img src="static/Assets/User-Profile-pic.jpg" alt="">
-                <h1 style="margin: 0px;">User Name</h1>
-                <p><i class="fa-solid fa-envelope"></i>user@gmail.com</p>
+    <div class="dash-main">
+        <div class="slid-bar">
+            <div class="sild-logo">
+                <img src="static/Assets/logo.png" alt="">
+                <h3>Her Network</h3>
             </div>
-            <button>
-                <h4 style="margin: 0px;"><i class="fa-solid fa-right-from-bracket"></i>LOGOUT</h4>
-            </button>
+            <div class="slid-list">
+                <a href=""><i class="fa-solid fa-list-check"></i>Post Task </a>
+                <a href=""><i class="fa-regular fa-eye"></i>View Tasks</a>
+                <a href=""><i class="fa-solid fa-message"></i>Messages</a>
+                <a href=""><i class="fa-solid fa-message"></i>Messages</a>
+            </div>
+            <div class="prof-settings">
+                <a style="text-decoration: none; color:#ac74fc;" href="login.html">
+                    <i style="margin-right: 15px;" class="fa-solid fa-gear"></i>Profile Settings
+                </a>
+            </div>
+        </div>
+
+        <div class="activity-con">
+
+            <div class="active-tittle">
+                <h2>Dashboard</h2>
+            </div>
+
+            <div class="dash-img">
+                <img src="static/Assets/professional-secretary-organizing-documents-with-woman-holding-pen-briefcase_1324816-27003.avif"
+                    alt="">
+            </div>
+
+            <div class="active-task">
+                <h2>Active Tasks</h2>
+                <ul id="task-list">
+                    <li>
+                        <span>Babysitting - <strong>In Progress</strong></span>
+                        <span class="priority high-priority">High</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 60%;"></div>
+                        </div>
+                        <button onclick="markCompleted(this)">Mark as Completed</button>
+                    </li>
+                    <li>
+                        <span>Cook Meals for Event - <strong>Completed</strong></span>
+                        <span class="priority medium-priority">Medium</span>
+                        <button onclick="markCompleted(this)" disabled>Completed</button>
+                    </li>
+                </ul>
+            </div>
+
+
+            <div class="active-footer">
+                <div class="quvic-links">
+                    <!-- Quick Links Section -->
+                    <section id="quick-links-section">
+                        <h2 onclick="toggleSection('quick-links-section')">
+                            Quick Links <span>&#9660;</span>
+                        </h2>
+                        <button onclick="postTask()">Post New Task</button>
+                        <button onclick="listService()">List a Service</button>
+                    </section>
+                </div>
+
+                <div class="notivication">
+                    <section id="notifications-section">
+                        <h2 onclick="toggleSection('notifications-section')">
+                          Notifications <span>&#9660;</span>
+                        </h2>
+                        <ul id="notification-list">
+                          <li>
+                            You have a new message from Sarah (10:30 AM).
+                            <button onclick="dismissNotification(this)">Dismiss</button>
+                          </li>
+                          <li>
+                            Emma accepted your babysitting task (Yesterday, 4:45 PM).
+                            <button onclick="dismissNotification(this)">Dismiss</button>
+                          </li>
+                        </ul>
+                      </section>
+                </div>
+            </div>
+
 
         </div>
+
+
+
+
+        <div class="User-prof">
+            <div class="User-prof-titl">
+                <h2>My Profile</h2>
+            </div>
+            <div class="prof-info">
+
+                <div>
+                    <img src="static/Assets/User-Profile-pic.jpg" alt="">
+                    <h1 style="margin: 0px;">User Name</h1>
+                    <p><i class="fa-solid fa-envelope"></i>user@gmail.com</p>
+                </div>
+                <button>
+                    <h4 style="margin: 0px;"><i class="fa-solid fa-right-from-bracket"></i>LOGOUT</h4>
+                </button>
+
+            </div>
+        </div>
     </div>
-</div>
-    
+
+
+
+
+    <script>
+        // Toggle Sections
+        function toggleSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            section.classList.toggle('collapsed');
+        }
+
+        // Mark Task as Completed
+        function markCompleted(button) {
+            const task = button.parentElement;
+            task.classList.add('task-completed');
+            button.disabled = true;
+            button.textContent = 'Completed';
+            showToast('Task marked as completed!');
+        }
+
+        // Dismiss Notification
+        function dismissNotification(button) {
+            const notification = button.parentElement;
+            notification.remove();
+            showToast('Notification dismissed!');
+        }
+
+        // Show Toast Notification
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 3000);
+        }
+
+        // Post Task Example Function
+        function postTask() {
+            alert('Navigating to Post Task page!');
+        }
+
+        // List Service Example Function
+        function listService() {
+            alert('Navigating to List Service page!');
+        }
+    </script>
+
 </body>
+
 </html>
