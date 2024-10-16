@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-@_82mkowl1)g-c6@7sz63vjqgk%1q5he&h@r0kqa#f=6fd%!9djjfsdsvnjn'
+SECRET_KEY = 'django-insecure-2zmqu00_v@t$4_d+qap9=54gylizi9ig3w+-4!na)#ni6lie%*'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -55,7 +55,7 @@ ROOT_URLCONF = 'backend_project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [ "D:/git project/Her-Network/frontend" ],
+        'DIRS': ['D:/Her network/Her-Network/frontend/',],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -115,10 +115,11 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
-import os
+
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [
-    "D:/git project/Her-Network/frontend/static",
+    
+    "D:/Her network/Her-Network/frontend/static/",
 ]
 
 # Default primary key field type

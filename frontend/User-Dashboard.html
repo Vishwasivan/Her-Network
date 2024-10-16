@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Her Network</title>
@@ -16,20 +17,51 @@
     <script src="https://kit.fontawesome.com/a7e1cdcb19.js" crossorigin="anonymous"></script>
 
 
-    <!-- style-sheet -->
-    <link rel="stylesheet" href="static/style.css">
-
-    <!-- script -->
-    <script src="static/script.js"></script>
+   
 </head>
 
 <body>
 
+<<<<<<< HEAD
+<div class="dash-main">
+    <div class="slid-bar">
+        <div class="sild-logo">
+            <img src="{% static 'Assets/logo.png' %}" alt="">
+            <h3>Her Network</h3>
+        </div>
+        <div class="slid-list">
+           <a href=""><i class="fa-solid fa-list-check"></i>Post Task </a>
+            <a href=""><i class="fa-regular fa-eye"></i>View Tasks</a>
+            <a href=""><i class="fa-solid fa-message"></i>Messages</a>
+            <a href=""><i class="fa-solid fa-message"></i>Messages</a>
+        </div>
+        <div class="prof-settings">
+            <a style="text-decoration: none; color:#ac74fc;" href="login.html">
+                <i style="margin-right: 15px;" class="fa-solid fa-gear"></i>Profile Settings
+            </a>
+        </div>
+    </div>
+
+    <div class="activity-con">
+        helo
+    </div>
+    <div class="User-prof">
+        <div class="User-prof-titl">
+            <h2>My Profile</h2>
+        </div>
+        <div class="prof-info">
+
+            <div>
+                <img src="{% static 'Assets/User-Profile-pic.jpg' %}" alt="">
+                <h1 style="margin: 0px;">User Name</h1>
+                <p><i class="fa-solid fa-envelope"></i>user@gmail.com</p>
+=======
     <div class="dash-main">
         <div class="slid-bar">
             <div class="sild-logo">
                 <img src="static/Assets/logo.png" alt="">
                 <h3>Her Network</h3>
+>>>>>>> 14faa420d13c315d2e4c39ac13292a6ab2aff813
             </div>
             <div class="slid-list">
                 <a href=""><i class="fa-solid fa-list-check"></i>Post Task </a>
@@ -121,6 +153,59 @@
             </div>
         </div>
     </div>
+<<<<<<< HEAD
+</div>
+     <!-- style-sheet -->
+     <link rel="stylesheet" href="{% static 'style.css' %}">
+
+     <!-- script -->
+     <script src="{% static 'script.js' %}"></script>
+=======
+
+
+
+
+    <script>
+        // Toggle Sections
+        function toggleSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            section.classList.toggle('collapsed');
+        }
+
+        // Mark Task as Completed
+        function markCompleted(button) {
+            const task = button.parentElement;
+            task.classList.add('task-completed');
+            button.disabled = true;
+            button.textContent = 'Completed';
+            showToast('Task marked as completed!');
+        }
+
+        // Dismiss Notification
+        function dismissNotification(button) {
+            const notification = button.parentElement;
+            notification.remove();
+            showToast('Notification dismissed!');
+        }
+
+        // Show Toast Notification
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 3000);
+        }
+
+        // Post Task Example Function
+        function postTask() {
+            alert('Navigating to Post Task page!');
+        }
+
+        // List Service Example Function
+        function listService() {
+            alert('Navigating to List Service page!');
+        }
+    </script>
 
 </body>
 
