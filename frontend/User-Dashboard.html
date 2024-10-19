@@ -25,7 +25,7 @@
 
 <body>
 
-    <div class="dash-main">
+    <div class="dash-main" >
         <div class="slid-bar">
             <div class="sild-logo">
                 <img src="static/Assets/logo.png" alt="">
@@ -33,11 +33,11 @@
             </div>
             <div class="slid-list">
                 <!-- <a href=""><i class="fa-solid fa-list-check"></i>Post Task </a> -->
-                 <a ><i class="fa-solid fa-chart-line"></i>Dashboard</a>
-                <a href=""><i class="fa-regular fa-eye"></i>View Tasks</a>
+                 <a onclick="showuDash()"><i class="fa-solid fa-chart-line"></i>Dashboard</a>
+                <a href=""><i class="fa-solid fa-link"></i>Connection Requst</a>
                 <a onclick="showChat()" id="massage"><i class="fa-solid fa-message"></i>Messages</a>
                 <a href=""><i class="fa-regular fa-comment"></i>Feedback</a>
-                <a><i class="fa-solid fa-baby-carriage"></i>Baby Status Update</a>
+                <a onclick="showuBabyUpdate()"><i class="fa-solid fa-baby-carriage"></i>Baby Status Update</a>
             </div>
             <div class="prof-settings">
                 <a onclick="openProSetting()" style="text-decoration: none; color:#ac74fc;" >
@@ -45,8 +45,58 @@
                 </a>
             </div>
         </div>
-
-        <div class="activity-con">
+        <div class="babysatatus" id="babysatatus">
+            <div class="active-tittle">
+                <h2 style="margin: 20px 0px 0px 0px;">Babysitting Status Update</h2>
+            </div>
+            <div class="status-con">
+                <div class="status-con-sub">
+                    <div class="status-update-box">
+                        <p>Morning 09 to 10 baby status Update</p>
+                        <button onclick="openupdate()">UPDATE</button>
+                    </div>
+                    <div class="status-update-box">
+                        <p>Morning 10AM to 11AM baby status Update</p>
+                        <button onclick="openupdate()">UPDATE</button>
+                    </div>
+                    <div class="status-update-box">
+                        <p>Morning 11AM to 12AM baby status Update</p>
+                        <button onclick="openupdate()">UPDATE</button>
+                    </div>
+                    <div class="status-update-box">
+                        <p>Afternoon 12AM to 01PM baby status Update</p>
+                        <button onclick="openupdate()">UPDATE</button>
+                    </div>
+                    <div class="status-update-box">
+                        <p>Afternoon 01PM to 02PM baby status Update</p>
+                        <button onclick="openupdate()">UPDATE</button>
+                    </div>
+                </div>
+                <div class="status-con-sub">
+                    <div class="status-update-box">
+                        <p>Afternoon 02PM to 03PM baby status Update</p>
+                        <button onclick="openupdate()">UPDATE</button>
+                    </div>
+                    <div class="status-update-box">
+                        <p>Afternoon 04PM to 05PM baby status Update</p>
+                        <button onclick="openupdate()">UPDATE</button>
+                    </div>
+                    <div class="status-update-box">
+                        <p>Evening 05PM to 06PM baby status Update</p>
+                        <button onclick="openupdate()">UPDATE</button>
+                    </div>
+                    <div class="status-update-box">
+                        <p>Evening 06PM to 07PM baby status Update</p>
+                        <button onclick="openupdate()">UPDATE</button>
+                    </div>
+                    <div class="status-update-box">
+                        <p>Evening 07PM to 08PM baby status Update</p>
+                        <button onclick="openupdate()">UPDATE</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="activity-con" id="activity-con" >
 
             <div class="active-tittle">
                 <h2 style="margin: 20px 0px 0px 0px;">Dashboard</h2>
@@ -112,7 +162,7 @@
             <div class="prof-info">
 
                 <div>
-                    <img src="static/Assets/User-Profile-pic.jpg" alt="">
+                    <img src="static/Assets/Usser profile pic2.jpg" alt="">
                     <h1 style="margin: 0px;">User Name</h1>
                     <p><i class="fa-solid fa-envelope"></i>user@gmail.com</p>
                 </div>
@@ -175,7 +225,7 @@
 
 
 
-    <div class="modal" id="serviceModal">
+    <div class="modal" style="display: none;" id="serviceModal">
         <div class="modal-content">
             
             <div class="modal-header">
@@ -254,6 +304,24 @@
 
             <button type="submit" class="save-button">Save Changes</button>
         </form>
+    </div>
+</div>
+
+<div class="modal" id="statusModal"> 
+    <div class="modal-content" style="margin: 0px;">
+        <a onclick="closeupdate()"><i id="baby-close" class="fa-solid fa-xmark"></i></a> 
+        <h3 style="margin: 0px;">Update Baby Status</h3>
+        <select id="statusSelect">
+            <option value="Playing">Playing</option>
+            <option value="Feeding">Feeding</option>
+            <option value="Sleeping">Sleeping</option>
+        </select>
+        <textarea id="notesInput" placeholder="Additional Notes..."></textarea><br>
+        <label for="file-upload" class="custom-file-upload">
+            Upload baby current image or video
+        </label>
+        <input id="file-upload" type="file">
+        <button style="margin-top: 10px;" onclick="closeupdate()">Submit</button>
     </div>
 </div>
 

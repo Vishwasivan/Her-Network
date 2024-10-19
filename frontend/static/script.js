@@ -200,3 +200,52 @@ function closeSkil() {
         }
 
 
+
+        function closeupdate() {
+            const upclose = document.getElementById('statusModal');
+            upclose.style.display = 'none';
+        }
+
+        function openupdate() {
+            const upclose = document.getElementById('statusModal');
+            upclose.style.display = 'flex';
+        }
+        function showuBabyUpdate() {
+            const  showuBabyUpdate = document.getElementById('babysatatus');
+            const  closeDash = document.getElementById('activity-con');
+            closeDash.style.display = 'none';
+            showuBabyUpdate.style.display = 'flex';
+        }
+        function showuDash() {
+            const  showuBabyUpdate = document.getElementById('babysatatus');
+            const  closeDash = document.getElementById('activity-con');
+            closeDash.style.display = 'flex';
+            showuBabyUpdate.style.display = 'none';
+        }
+        
+        function createPostBox() {
+            const feed = document.getElementById("tasker-feeds");
+            const postBox = document.createElement("div")
+            const postImg = document.createElement("img")
+            const postTitle = document.createElement("p")
+            const postLoc = document.createElement("h4")
+            const postpri = document.createElement("h3")
+            const postBtn = document.createElement("button")
+
+            postBox.setAttribute("class","post-box")
+            postImg.setAttribute("src","/frontend/static/Assets/cooking.jpg")
+            
+            postTitle.textContent = "I can Cook Well"
+            postLoc.textContent = "guindy"
+            postpri.textContent = "7000"
+            postBtn.textContent = "Grow To Gether"
+
+            feed.appendChild(postBox)
+            postBox.appendChild(postImg,postTitle,postLoc,postpri,postBtn)
+        }
+        
+        
+
+
+
+

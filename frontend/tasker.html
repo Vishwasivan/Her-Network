@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Her Network</title>
+    <link rel="icon" type="image/x-icon" href="static/Assets/logo.png">
+
+    <!-- google-fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+        rel="stylesheet">
+    <!-- fontawesome -->
+    <script src="https://kit.fontawesome.com/a7e1cdcb19.js" crossorigin="anonymous"></script>
+
+
+    <!-- style-sheet -->
+    <link rel="stylesheet" href="static/style.css">
+
+    <!-- script -->
+    <script src="static/script.js"></script>
+</head>
+<body>
+    <div class="tasker-main">
+        <div class="tasker-slid-bar">
+            <div class="tasker-log-tittle">
+                <img src="static/Assets/logo.png" alt="">
+                <h3>Her Network</h3>
+            </div>
+            <div class="tasker-side-nav">
+                <a><i class="fa-solid fa-baby-carriage"></i>Baby status</a>
+                <!-- <a><i class="fa-regular fa-bell"></i>Notification</a> -->
+                <a><i class="fa-solid fa-link"></i>Connection Status</a>
+                <a onclick="showChat()" id="massage"><i class="fa-solid fa-message"></i>Messages</a>
+            </div>
+            <div class="tasker-profile-settings">
+                <h3 onclick="openProSetting()"><i class="fa-solid fa-gear"></i>profile Settings</h3>
+            </div>
+        </div>
+    
+        <div class="tasker-main-container">
+            <div class="tasker-nav">
+                <div class="nav-search">
+                    <input type="search" placeholder="search"><i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+                <div class="nav-other">
+                    <a><i class="fa-solid fa-user"></i></a>
+                    <a><i class="fa-solid fa-right-from-bracket"></i>Logout</a>
+                    <a><i class="fa-regular fa-bell"></i>Notification</a>
+                </div>
+            </div>
+            <div class="tasker-shortcut">
+                <div class="short-box">
+                    <button>
+                        <p><i class="fa-solid fa-utensils"></i>Coooking</p>
+                    </button>
+                </div>
+                <div class="short-box">
+                    <button>
+                        <p><i class="fa-solid fa-book-open-reader"></i>Teaching</p>
+                    </button>
+                   
+                </div>
+                <div class="short-box">
+                    <button>
+                        <p><i class="fa-solid fa-baby-carriage"></i>Baby Care</p>
+                    </button>
+                    
+                </div>
+                <div class="short-box">
+                    <button><p><i class="fa-solid fa-broom"></i>Cleaning</p></button>
+                    
+                </div>
+                <div class="short-box">
+                    <button>
+                        <p>Others...</p>
+                    </button>
+                    
+                </div>
+            </div>
+            <div class="tasker-feeds">
+                <div class="post-box" id="tasker-feeds">
+                    <img src="static/Assets/cooking.jpg" alt="">
+                    <p>Lorem ipsum dolor sit amet</p>
+                    <h4><i class="fa-solid fa-location-dot"></i>guindy</h4>
+                    <h3><i class="fa-solid fa-indian-rupee-sign"></i>7000</h3>
+                    <button><i class="fa-solid fa-link"></i>Grow Together</button>
+                </div>
+                <div class="post-box" id="tasker-feeds">
+                    <img src="static/Assets/cooking.jpg" alt="">
+                    <p>Lorem ipsum dolor sit amet</p>
+                    <h4><i class="fa-solid fa-location-dot"></i>guindy</h4>
+                    <h3><i class="fa-solid fa-indian-rupee-sign"></i>7000</h3>
+                    <button><i class="fa-solid fa-link"></i>Grow Together</button>
+                </div>
+                <div class="post-box" id="tasker-feeds">
+                    <img src="static/Assets/cooking.jpg" alt="">
+                    <p>Lorem ipsum dolor sit amet</p>
+                    <h4><i class="fa-solid fa-location-dot"></i>guindy</h4>
+                    <h3><i class="fa-solid fa-indian-rupee-sign"></i>7000</h3>
+                    <button><i class="fa-solid fa-link"></i>Grow Together</button>
+                </div>
+                <div class="post-box" id="tasker-feeds">
+                    <img src="static/Assets/cooking.jpg" alt="">
+                    <p>Lorem ipsum dolor sit amet</p>
+                    <h4><i class="fa-solid fa-location-dot"></i>guindy</h4>
+                    <h3><i class="fa-solid fa-indian-rupee-sign"></i>7000</h3>
+                    <button><i class="fa-solid fa-link"></i>Grow Together</button>
+                </div>
+                <div class="post-box" id="tasker-feeds">
+                    <img src="static/Assets/cooking.jpg" alt="">
+                    <p>Lorem ipsum dolor sit amet</p>
+                    <h4><i class="fa-solid fa-location-dot"></i>guindy</h4>
+                    <h3><i class="fa-solid fa-indian-rupee-sign"></i>7000</h3>
+                    <button><i class="fa-solid fa-link"></i>Grow Together</button>
+                </div>
+                
+                <div class="post-box" id="tasker-feeds">
+                    <img src="static/Assets/cooking.jpg" alt="">
+                    <p>Lorem ipsum dolor sit amet</p>
+                    <h4><i class="fa-solid fa-location-dot"></i>guindy</h4>
+                    <h3><i class="fa-solid fa-indian-rupee-sign"></i>7000</h3>
+                    <button><i class="fa-solid fa-link"></i>Grow Together</button>
+                </div>
+                <div class="post-box" id="tasker-feeds">
+                    <img src="static/Assets/cooking.jpg" alt="">
+                    <p>Lorem ipsum dolor sit amet</p>
+                    <h4><i class="fa-solid fa-location-dot"></i>guindy</h4>
+                    <h3><i class="fa-solid fa-indian-rupee-sign"></i>7000</h3>
+                    <button><i class="fa-solid fa-link"></i>Grow Together</button>
+                </div>
+                <div class="post-box" id="tasker-feeds">
+                    <img src="static/Assets/cooking.jpg" alt="">
+                    <p>Lorem ipsum dolor sit amet</p>
+                    <h4><i class="fa-solid fa-location-dot"></i>guindy</h4>
+                    <h3><i class="fa-solid fa-indian-rupee-sign"></i>7000</h3>
+                    <button><i class="fa-solid fa-link"></i>Grow Together</button>
+                </div>
+                <div class="post-box" id="tasker-feeds">
+                    <img src="static/Assets/cooking.jpg" alt="">
+                    <p>Lorem ipsum dolor sit amet</p>
+                    <h4><i class="fa-solid fa-location-dot"></i>guindy</h4>
+                    <h3><i class="fa-solid fa-indian-rupee-sign"></i>7000</h3>
+                    <button><i class="fa-solid fa-link"></i>Grow Together</button>
+                </div>
+                <div class="post-box" id="tasker-feeds">
+                    <img src="static/Assets/cooking.jpg" alt="">
+                    <p>Lorem ipsum dolor sit amet</p>
+                    <h4><i class="fa-solid fa-location-dot"></i>guindy</h4>
+                    <h3><i class="fa-solid fa-indian-rupee-sign"></i>7000</h3>
+                    <button><i class="fa-solid fa-link"></i>Grow Together</button>
+                </div>
+
+                <div class="post-box" id="tasker-feeds">
+                    <img src="static/Assets/cooking.jpg" alt="">
+                    <p>Lorem ipsum dolor sit amet</p>
+                    <h4><i class="fa-solid fa-location-dot"></i>guindy</h4>
+                    <h3><i class="fa-solid fa-indian-rupee-sign"></i>7000</h3>
+                    <button><i class="fa-solid fa-link"></i>Grow Together</button>
+                </div>
+                <div class="post-box" id="tasker-feeds">
+                    <img src="static/Assets/cooking.jpg" alt="">
+                    <p>Lorem ipsum dolor sit amet</p>
+                    <h4><i class="fa-solid fa-location-dot"></i>guindy</h4>
+                    <h3><i class="fa-solid fa-indian-rupee-sign"></i>7000</h3>
+                    <button><i class="fa-solid fa-link"></i>Grow Together</button>
+                </div>
+                <div class="post-box" id="tasker-feeds">
+                    <img src="static/Assets/cooking.jpg" alt="">
+                    <p>Lorem ipsum dolor sit amet</p>
+                    <h4><i class="fa-solid fa-location-dot"></i>guindy</h4>
+                    <h3><i class="fa-solid fa-indian-rupee-sign"></i>7000</h3>
+                    <button><i class="fa-solid fa-link"></i>Grow Together</button>
+                </div>
+                <div class="post-box" id="tasker-feeds">
+                    <img src="static/Assets/cooking.jpg" alt="">
+                    <p>Lorem ipsum dolor sit amet</p>
+                    <h4><i class="fa-solid fa-location-dot"></i>guindy</h4>
+                    <h3><i class="fa-solid fa-indian-rupee-sign"></i>7000</h3>
+                    <button><i class="fa-solid fa-link"></i>Grow Together</button>
+                </div>
+                <div class="post-box" id="tasker-feeds">
+                    <img src="static/Assets/cooking.jpg" alt="">
+                    <p>Lorem ipsum dolor sit amet</p>
+                    <h4><i class="fa-solid fa-location-dot"></i>guindy</h4>
+                    <h3><i class="fa-solid fa-indian-rupee-sign"></i>7000</h3>
+                    <button><i class="fa-solid fa-link"></i>Grow Together</button>
+                </div>
+
+                <div class="post-box" id="tasker-feeds">
+                    <img src="static/Assets/cooking.jpg" alt="">
+                    <p>Lorem ipsum dolor sit amet</p>
+                    <h4><i class="fa-solid fa-location-dot"></i>guindy</h4>
+                    <h3><i class="fa-solid fa-indian-rupee-sign"></i>7000</h3>
+                    <button><i class="fa-solid fa-link"></i>Grow Together</button>
+                </div>
+                <div class="post-box" id="tasker-feeds">
+                    <img src="static/Assets/cooking.jpg" alt="">
+                    <p>Lorem ipsum dolor sit amet</p>
+                    <h4><i class="fa-solid fa-location-dot"></i>guindy</h4>
+                    <h3><i class="fa-solid fa-indian-rupee-sign"></i>7000</h3>
+                    <button><i class="fa-solid fa-link"></i>Grow Together</button>
+                </div>
+                <div class="post-box" id="tasker-feeds">
+                    <img src="static/Assets/cooking.jpg" alt="">
+                    <p>Lorem ipsum dolor sit amet</p>
+                    <h4><i class="fa-solid fa-location-dot"></i>guindy</h4>
+                    <h3><i class="fa-solid fa-indian-rupee-sign"></i>7000</h3>
+                    <button><i class="fa-solid fa-link"></i>Grow Together</button>
+                </div>
+                <div class="post-box" id="tasker-feeds">
+                    <img src="static/Assets/cooking.jpg" alt="">
+                    <p>Lorem ipsum dolor sit amet</p>
+                    <h4><i class="fa-solid fa-location-dot"></i>guindy</h4>
+                    <h3><i class="fa-solid fa-indian-rupee-sign"></i>7000</h3>
+                    <button><i class="fa-solid fa-link"></i>Grow Together</button>
+                </div>
+                <div class="post-box" id="tasker-feeds">
+                    <img src="static/Assets/cooking.jpg" alt="">
+                    <p>Lorem ipsum dolor sit amet</p>
+                    <h4><i class="fa-solid fa-location-dot"></i>guindy</h4>
+                    <h3><i class="fa-solid fa-indian-rupee-sign"></i>7000</h3>
+                    <button><i class="fa-solid fa-link"></i>Grow Together</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+    <div class="chat" id="chat" style="display: none;">
+
+        <!-- Sidebar (Chat List) -->
+        <div class="sidebar">
+
+            <div class="sidebar-header">
+                <i id="close" onclick="closeChat()" class="fa-solid fa-xmark"></i>
+                Chats
+            </div>
+            <div class="chat-list">
+                <div class="chat-item" onclick="openChat('Alice')">
+                    <div class="chat-avatar"></div>
+                    <div class="chat-info">
+                        <div class="chat-name">Alice</div>
+                        <div class="chat-last-message">Hi, how are you?</div>
+                    </div>
+                </div>
+                <div class="chat-item" onclick="openChat('Bob')">
+                    <div class="chat-avatar"></div>
+                    <div class="chat-info">
+                        <div class="chat-name">Bob</div>
+                        <div class="chat-last-message">Let’s meet tomorrow!</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Chat Window -->
+        <div class="chat-window">
+            <div class="chat-header" id="chatHeader">Chat with [User Name]</div>
+            <div class="message-area" id="messageArea">
+                <div class="message sent">
+                    <p>Hello!</p>
+                    <span class="timestamp">10:30 AM</span>
+                </div>
+                <div class="message received">
+                    <p>Hi! How are you?</p>
+                    <span class="timestamp">10:31 AM</span>
+                </div>
+            </div>
+            <div class="input-area">
+                <input type="text" id="messageInput" placeholder="Type a message..." />
+                <button class="send-button" onclick="sendMessage()">Send</button>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="pro-setting" id="pro-setting">
+        <div class="settings-container">
+            <div class="settings-header">
+                <h2>Profile Settings</h2>
+                <!-- <button onclick="closeSettings()">&times;</button> -->
+                <i id="close" style="top:-44px; left:12%;" onclick="closeSettings()" class="fa-solid fa-xmark"></i>
+            </div>
+    
+            <form onsubmit="saveSettings(event)">
+                <div class="profile-pic">
+                    <img src="static/Assets/User-Profile-pic.jpg" id="profilePicPreview" alt="Profile Picture">
+                    <!-- <input type="file" id="profilePic" accept="image/*" onchange="previewProfilePic(event)"> -->
+                    <label for="file-upload" class="custom-file-upload">
+                        Change Profile Picture
+                    </label>
+                    <input id="file-upload" type="file">
+                </div>
+    
+                <input type="text" id="userName" placeholder="Enter your name" required>
+                <input type="email" id="userEmail" placeholder="Enter your email" required>
+                <input type="password" id="userPassword" placeholder="Enter new password" required>
+    
+                <label for="userLocation">Location</label>
+                <select id="userLocation" required>
+                    <option value="">Select Location</option>
+                    <option value="Adyar">Adyar</option>
+                    <option value="Anna Nagar">Anna Nagar</option>
+                    <option value="T. Nagar">T. Nagar</option>
+                    <option value="Velachery">Velachery</option>
+                    <option value="Kodambakkam">Kodambakkam</option>
+                    <option value="Besant Nagar">Besant Nagar</option>
+                </select>
+                <button type="submit" class="save-button">Save Changes</button>
+            </form>
+        </div>
+    </div>
+    
+</body>
+</html>

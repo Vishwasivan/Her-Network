@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Connection Requests Popup</title>
+    <title>Connection Requests with Search</title>
     <style>
         /* Button styling */
         #openPopupBtn {
@@ -28,14 +28,14 @@
         /* Popup content box */
         .popup-content {
             background-color: white;
-            margin: 15% auto;
+            margin: 5% auto;
             padding: 20px;
             width: 50%;
             border-radius: 10px;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
         }
 
-        /* Close button styling */
+        /* Close button */
         .close {
             float: right;
             font-size: 24px;
@@ -43,7 +43,16 @@
             cursor: pointer;
         }
 
-        /* Request list styling */
+        /* Search box */
+        #searchInput {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        /* Request list */
         ul {
             list-style-type: none;
             padding: 0;
@@ -63,7 +72,7 @@
             background-color: #e0e0e0;
         }
 
-        /* Action buttons styling */
+        /* Action buttons */
         .action-buttons button {
             margin-left: 5px;
             padding: 5px 10px;
@@ -81,14 +90,6 @@
             background-color: #f44336;
             color: white;
         }
-
-        .accept-btn:hover {
-            background-color: #45a049;
-        }
-
-        .decline-btn:hover {
-            background-color: #e53935;
-        }
     </style>
 </head>
 <body>
@@ -99,6 +100,7 @@
         <div class="popup-content">
             <span id="closePopupBtn" class="close">&times;</span>
             <h2>Connection Requests</h2>
+            <input type="text" id="searchInput" placeholder="Search requests...">
             <ul id="requestList">
                 <li class="request-item">
                     <span>Alice wants to connect</span>
@@ -121,6 +123,13 @@
                         <button class="decline-btn" onclick="handleDecline(this)">Decline</button>
                     </div>
                 </li>
+                <li class="request-item">
+                    <span>Diana invited you to join her group</span>
+                    <div class="action-buttons">
+                        <button class="accept-btn" onclick="handleAccept(this)">Accept</button>
+                        <button class="decline-btn" onclick="handleDecline(this)">Decline</button>
+                    </div>
+                </li>
             </ul>
         </div>
     </div>
@@ -129,21 +138,33 @@
         const openPopupBtn = document.getElementById('openPopupBtn');
         const closePopupBtn = document.getElementById('closePopupBtn');
         const popup = document.getElementById('popup');
+        const searchInput = document.getElementById('searchInput');
+        const requestList = document.getElementById('requestList');
+        const requests = requestList.getElementsByClassName('request-item');
 
         // Open the popup
         openPopupBtn.addEventListener('click', () => {
             popup.style.display = 'block';
         });
 
-        // Close the popup when clicking the close icon
+        // Close the popup
         closePopupBtn.addEventListener('click', () => {
             popup.style.display = 'none';
         });
 
-        // Close the popup if user clicks outside of the content box
+        // Close the popup by clicking outside the content
         window.addEventListener('click', (event) => {
             if (event.target === popup) {
                 popup.style.display = 'none';
+            }
+        });
+
+        // Search filter
+        searchInput.addEventListener('input', () => {
+            const filter = searchInput.value.toLowerCase();
+            for (let i = 0; i < requests.length; i++) {
+                const text = requests[i].querySelector('span').textContent.toLowerCase();
+                requests[i].style.display = text.includes(filter) ? '' : 'none';
             }
         });
 
