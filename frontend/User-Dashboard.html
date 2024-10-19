@@ -33,12 +33,14 @@
             </div>
             <div class="slid-list">
                 <!-- <a href=""><i class="fa-solid fa-list-check"></i>Post Task </a> -->
+                 <a ><i class="fa-solid fa-chart-line"></i>Dashboard</a>
                 <a href=""><i class="fa-regular fa-eye"></i>View Tasks</a>
                 <a onclick="showChat()" id="massage"><i class="fa-solid fa-message"></i>Messages</a>
                 <a href=""><i class="fa-regular fa-comment"></i>Feedback</a>
+                <a><i class="fa-solid fa-baby-carriage"></i>Baby Status Update</a>
             </div>
             <div class="prof-settings">
-                <a style="text-decoration: none; color:#ac74fc;" href="login.html">
+                <a onclick="openProSetting()" style="text-decoration: none; color:#ac74fc;" >
                     <i style="margin-right: 15px;" class="fa-solid fa-gear"></i>Profile Settings
                 </a>
             </div>
@@ -130,7 +132,6 @@
 
             <div class="sidebar-header">
                 <i id="close" onclick="closeChat()" class="fa-solid fa-xmark"></i>
-
                 Chats
             </div>
             <div class="chat-list">
@@ -215,6 +216,44 @@
                 <button type="submit">POST</button>
             </form>
         </div>
+    </div>
+</div>
+
+<div class="pro-setting" id="pro-setting">
+    <div class="settings-container">
+        <div class="settings-header">
+            <h2>Profile Settings</h2>
+            <!-- <button onclick="closeSettings()">&times;</button> -->
+            <i id="close" style="top:-44px; left:12%;" onclick="closeSettings()" class="fa-solid fa-xmark"></i>
+        </div>
+
+        <form onsubmit="saveSettings(event)">
+            <div class="profile-pic">
+                <img src="static/Assets/User-Profile-pic.jpg" id="profilePicPreview" alt="Profile Picture">
+                <!-- <input type="file" id="profilePic" accept="image/*" onchange="previewProfilePic(event)"> -->
+                <label for="file-upload" class="custom-file-upload">
+                    Change Profile Picture
+                </label>
+                <input id="file-upload" type="file">
+            </div>
+
+            <input type="text" id="userName" placeholder="Enter your name" required>
+            <input type="email" id="userEmail" placeholder="Enter your email" required>
+            <input type="password" id="userPassword" placeholder="Enter new password" required>
+
+            <label for="userLocation">Location</label>
+            <select id="userLocation" required>
+                <option value="">Select Location</option>
+                <option value="Adyar">Adyar</option>
+                <option value="Anna Nagar">Anna Nagar</option>
+                <option value="T. Nagar">T. Nagar</option>
+                <option value="Velachery">Velachery</option>
+                <option value="Kodambakkam">Kodambakkam</option>
+                <option value="Besant Nagar">Besant Nagar</option>
+            </select>
+
+            <button type="submit" class="save-button">Save Changes</button>
+        </form>
     </div>
 </div>
 

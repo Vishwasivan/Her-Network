@@ -168,3 +168,35 @@ function closeSkil() {
         alert(`Service "${title}" has been offered successfully!`);
         document.getElementById('serviceModal').style.display = 'none';
     }
+
+
+
+
+
+
+
+
+        // Save Profile Settings
+        function saveSettings(event) {
+            event.preventDefault(); // Prevent page reload
+
+            const name = document.getElementById('userName').value;
+            const email = document.getElementById('userEmail').value;
+            const location = document.getElementById('userLocation').value;
+
+            alert(`Profile updated successfully!\nName: ${name}\nEmail: ${email}\nLocation: ${location}`);
+
+            // Add logic to save the changes (e.g., send to the server)
+        }
+
+        // Close Profile Settings (if part of a modal or page navigation)
+        function closeSettings() {
+            const proSetting = document.getElementById('pro-setting');
+            proSetting.style.display = 'none';
+        }
+        function openProSetting() {
+            const proSetting = document.getElementById('pro-setting');
+            proSetting.style.display = 'block';
+        }
+
+

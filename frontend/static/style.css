@@ -235,6 +235,7 @@ button:hover {
     text-align: center;
     text-decoration: none;
     color: #4A4A4A;
+    cursor: pointer;
 }
 .slid-list  a:hover{
     color: #ac74fc;
@@ -249,6 +250,7 @@ button:hover {
 .prof-settings{
     height: 15vh;
     text-align: center;
+    cursor: pointer;
 }
 .prof-settings a button{
     text-align: center;
@@ -555,14 +557,15 @@ button:hover {
   #close{
     font-size: larger;
     position: relative; 
-    top: -35px;
-     left: -45%;
+    top: -42px;
+     left: 285%;
      background-color: #ac74fc;
      padding: 10px;
      border-radius: 50%;
      box-shadow: 10px 13px 32px rgb(88, 88, 88);
      cursor: pointer;
-     color: white;
+     color: white
+     ;
   }
   #close:hover{
     color: #4A4A4A;
@@ -636,4 +639,116 @@ button:hover {
 
 .modal button:hover {
    padding: 15px;
+}
+
+
+.pro-setting{
+    display: none;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    position: absolute;
+    top: 8%;
+    left: 30%;
+    background-color: rgba(255, 255, 255, 0.979);
+    padding: 5px;
+    border-radius: 10px;
+    border: solid white;
+    box-shadow: 10px 13px 32px rgb(88, 88, 88);
+}
+
+.settings-container {
+    background-color: #ede3fc;
+    padding: 30px;
+    width: 400px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.settings-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.settings-header h2 {
+    margin: 0;
+}
+
+.settings-header button {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.settings-container input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    height: 20px;
+}
+.settings-container select{
+    width: 335px;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    height: 40px;
+}
+
+.profile-pic {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+/* .profile-pic input{
+    display: none;
+} */
+
+input[type="file"] {
+    display: none; /* Hide the input */
+}
+
+/* Style the label to look like a button */
+.custom-file-upload {
+    display: inline-block;
+    padding: 5px;
+    font-size: smaller;
+    cursor: pointer;
+    background-color: #ac74fc;
+    box-shadow: 3px 3px 12px rgb(88, 88, 88);
+    color: white;
+    border-radius: 4px;
+    border: none;
+    text-align: center;
+}
+
+.profile-pic img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: solid #c19af8e0;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.save-button {
+    width: 100%;
+    padding: 12px;
+    background-color: #ac74fc;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    
+}
+
+.save-button:hover {
+    background-color: #ac74fc;
 }
