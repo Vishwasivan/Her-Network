@@ -77,3 +77,94 @@ function closeSkil() {
         notification.remove();
         showToast('Notification dismissed!');
     }
+
+
+
+
+
+
+    // ///////////////////chat 
+
+    function openChat(name) {
+        // Update chat header with the selected user's name
+        document.getElementById('chatHeader').textContent = 'Chat with ' + name;
+  
+        // Clear previous messages (for demo purposes)
+        document.getElementById('messageArea').innerHTML = '';
+      }
+  
+      function sendMessage() {
+        const messageArea = document.getElementById('messageArea');
+        const messageInput = document.getElementById('messageInput');
+        const messageText = messageInput.value.trim();
+  
+        if (messageText !== "") {
+          const messageDiv = document.createElement('div');
+          messageDiv.classList.add('message', 'sent');
+          messageDiv.innerHTML = `<p>${messageText}</p><span class="timestamp">${new Date().toLocaleTimeString()}</span>`;
+  
+          messageArea.appendChild(messageDiv);
+          messageArea.scrollTop = messageArea.scrollHeight;
+          messageInput.value = "";
+        }
+      }
+  
+      document.getElementById('messageInput').addEventListener('keydown', function (event) {
+        if (event.key === 'Enter') {
+          sendMessage();
+        }
+      });
+
+      function closeChat() {
+        const chatbox = document.getElementById('chat');
+        chatbox.style.display = 'none';
+      }
+
+
+      function showChat() {
+        document.getElementById('chat').style.display = 'flex';
+    }
+
+
+
+
+
+     // Open Service Modal
+     function openServiceModal() {
+        const modal = document.getElementById('serviceModal');
+        modal.style.display = 'flex';
+    }
+
+    // Close Service Modal
+    function closeServiceModal() {
+        const modal = document.getElementById('serviceModal');
+        modal.style.display = 'none';
+    }
+
+    // Close Modal when clicking outside the content
+    window.onclick = function (event) {
+        const modal = document.getElementById('serviceModal');
+        if (event.target === modal) {
+            modal.style.display = 'none';
+        }
+    };
+
+    // Submit Service Handler
+    function submitService(event) {
+        event.preventDefault(); // Prevent page reload
+        const title = document.getElementById('serviceTitle').value;
+        const description = document.getElementById('serviceDescription').value;
+        const skills = document.getElementById('skills').value;
+        const availability = document.getElementById('availability').value;
+        const price = document.getElementById('servicePrice').value;
+        const location = document.getElementById('serviceLocation').value;
+        const image = document.getElementById('serviceImage').files[0];
+
+        if (!image) {
+            alert('Please upload an image!');
+            return;
+        }
+
+        alert(`Service "${title}" has been offered successfully!`);
+        document.getElementById('serviceModal').style.display = 'none';
+    }
