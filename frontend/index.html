@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
+{% load static %}
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Her Network</title>
-    <link rel="icon" type="image/x-icon" href="static/Assets/logo.png">
+    <link rel="icon" type="image/x-icon" href="{% static 'Assets/logo.png' %}">
 
     <!-- google-fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,10 +18,9 @@
 
 
     <!-- style-sheet -->
-    <link rel="stylesheet" href="static/style.css">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
 
-    <!-- script -->
-    <script src="static/script.js"></script>
+    
 
 
 </head>
@@ -31,7 +30,7 @@
     <!-- nav-bar -->
     <div class="nav-main">
         <div class="nav-logo">
-            <img src="static/Assets/logo.png" alt="">
+            <img src="{% static 'Assets/logo.png' %}" alt="">
             <h3>Her Network</h3>
         </div>
         <div class="nav-links">
@@ -40,7 +39,7 @@
             <h3><a href="">About</a></h3>
             <h3><a href="">Services</a></h3>
             <h3><a href="">Contact</a></h3>
-            <a href="login.html"><button>
+            <a href="/login"><button>
                     User Login/<br>Register button
                 </button></a>
         </div>
@@ -70,23 +69,23 @@
                 <em>Join the network, share your skills, and connect with women like you.</em>
             </p>
             <div>
-                <button style="margin: 0px 20px 0px 0px;"><a href="login.html" style="text-decoration: none; color: aliceblue;">
+                <button style="margin: 0px 20px 0px 0px;"><a href="/login" style="text-decoration: none; color: aliceblue;">
                         <h3 style="margin: 0px 0px 0px 0px; ">Empower & <br> Earn
                             with Your Skills</h3>
                     </a></button>
-                <button><a href="login.html" style="text-decoration: none; color: aliceblue;">
+                <button><a href="/login" style="text-decoration: none; color: aliceblue;">
                         <h3 style="margin: 0px;">Get Help, <br> Stay Productive</h3>
                     </a></button>
             </div>
 
         </div>
         <div class="Welcome-img">
-            <img src="static/Assets/BNG/home2-removebg-preview.png" alt="">
+            <img src="{% static 'Assets/BNG/home2-removebg-preview.png' %}" alt="">
         </div>
 
     </div>
-
+    <!-- script -->
+    <script src="{% static 'script.js'"></script>
 
 </body>
-
 </html>

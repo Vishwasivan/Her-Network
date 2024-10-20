@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
+{%load static %}
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Her Network</title>
-    <link rel="icon" type="image/x-icon" href="static/Assets/logo.png">
+    <link rel="icon" type="image/x-icon" href="{% static 'Assets/logo.png' %}">
 
     <!-- google-fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,10 +17,10 @@
 
 
     <!-- style-sheet -->
-    <link rel="stylesheet" href="static/style.css">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
 
     <!-- script -->
-    <script src="static/script.js"></script>
+    <script src="{% static 'script.js' %}"></script>
 </head>
 
 <body>
@@ -28,7 +28,7 @@
     <div class="dash-main" >
         <div class="slid-bar">
             <div class="sild-logo">
-                <img src="static/Assets/logo.png" alt="">
+                <img src="{% static 'Assets/logo.png' %}" alt="">
                 <h3>Her Network</h3>
             </div>
             <div class="slid-list">
@@ -103,9 +103,9 @@
             </div>
 
             <div class="dash-img">
-                <img src="static/Assets/BNG/female-student-presenting-report-graph-class-cartoon-person-presents-report-school_24797-1558-removebg-preview.png"
+                <img src="{% static 'Assets/BNG/female-student-presenting-report-graph-class-cartoon-person-presents-report-school_24797-1558-removebg-preview.png' %}"
                     alt="">
-                <img src="static/Assets/BNG/2.png" alt="">
+                <img src="{% static 'Assets/BNG/2.png' %}" alt="">
             </div>
 
 
@@ -162,7 +162,7 @@
             <div class="prof-info">
 
                 <div>
-                    <img src="static/Assets/Usser profile pic2.jpg" alt="">
+                    <img src="{% static 'Assets/Usser profile pic2.jpg' %}" alt="">
                     <h1 style="margin: 0px;">User Name</h1>
                     <p><i class="fa-solid fa-envelope"></i>user@gmail.com</p>
                 </div>
@@ -279,7 +279,7 @@
 
         <form onsubmit="saveSettings(event)">
             <div class="profile-pic">
-                <img src="static/Assets/User-Profile-pic.jpg" id="profilePicPreview" alt="Profile Picture">
+                <img src="{% static 'Assets/User-Profile-pic.jpg' %}" id="profilePicPreview" alt="Profile Picture">
                 <!-- <input type="file" id="profilePic" accept="image/*" onchange="previewProfilePic(event)"> -->
                 <label for="file-upload" class="custom-file-upload">
                     Change Profile Picture
@@ -353,6 +353,8 @@
         <a class="Request-chat" onclick="showChat()" id="Request-chat-3"><i class="fa-solid fa-message"></i>Chat</a>
     </div>
 </div>
+<!-- script -->
+<script src="{% static 'script.js' %}"></script>
 
 </body>
 

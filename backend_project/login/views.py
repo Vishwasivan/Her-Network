@@ -1,29 +1,67 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
+from django.contrib.auth.models import User,auth
+from django.contrib import messages
+from django.contrib.auth import authenticate
 from .models import Login_detail
 
 
-
 # Create your views here.
-def loginpage(request):
+def signuppage(request):
+    print("data")
     print(request.POST)
     print(request.POST.getlist('skills'))
-    def post(request,self):
-        if (request.method=='POST'):
-            login_detail= Login_detail()
-            login_detail.name=request.POST['Uname']
-            login_detail.email=request.POST['Uemail']
-            login_detail.role=request.POST['role']
-            login_detail.skill=request.POST.getlist('skills')
-            login_detail.password=request.POST['Upsw']
-            login_detail.save()
-    post(request,self=__name__)   
+    if (request.method=='POST'):
+        name=request.POST['Uname']
+        email=request.POST['Uemail']
+        number=request.POST['Uphone']
+        role=request.POST['role']
+        skill=request.POST.getlist('skills')
+        password=request.POST['Upsw']
+        password2=request.POST['UCpsw']
+        
+        if Login_detail.objects.filter(email=email).exists():
+            messages.info(request,"email already exist")
+            return render(request,'signup.html')
+        
+        if Login_detail.objects.filter(number=number).exists():
+            messages.info(request,"number already exist")
+            return render(request,'signup.html')
+            
+        elif password!=password2:
+            messages.info(request,"password does not match")
+            return render(request,'signup.html')
+        else:
+            login = Login_detail.objects.create(name=name,email=email,number=number,role=role,skill=skill,password=password)
+            login.save()
+            return redirect('login')
+
+    else:    
+        return render(request,'signup.html')
+
+
+
+def login(request):
+    if request.method=='POST':
+        email=request.POST['Uemail']
+        password=request.POST['Upsw']
+        login= authenticate(request,email=email,password=password)
+        if Login_detail.objects.filter(email=email,password=password).exists():
+            return redirect('index')
+        else:
+            messages.info(request,"cannot login") 
     return render(request,'login.html')
 
-#def loginpage(request):
-    #return render(request,'login.html')
+
+
 
 def indexpage(request):
     return render(request,'index.html')
 
-def userdashboard(request):
-    return render(request,'User-Dashboard.html')
+def signup(request):
+    return render(request,'signup.html')
+
+def service(request):
+    return render(request,'servicerPG.html')
+
+def s3(request):
+    return render(request,'taskerPG.html')

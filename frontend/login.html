@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+    {% load static %}
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Her Network</title>
-    <link rel="icon" type="image/x-icon" href="static/Assets/logo.png">
+    <link rel="icon" type="image/x-icon" href="{% static 'Assets/logo.png' %}">
 
     <!-- google-fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,10 +18,9 @@
     <script src="https://kit.fontawesome.com/a7e1cdcb19.js" crossorigin="anonymous"></script>
 
     <!-- style-sheet -->
-    <link rel="stylesheet" href="static/style.css">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
 
-    <!-- script -->
-    <script src="static/script.js"></script>
+
 </head>
 
 <body>
@@ -55,21 +55,23 @@
                 </table>
 
                 <div style="text-align: center; margin: 20px 0px;">
-                    <button><b><a href="servicerPG.html" style="text-decoration: none; color: white;">
+                    <button><b><a href="/home" style="text-decoration: none; color: white;">
                                 LOGIN</a></b></button>
                 </div>
 
                 <div style="text-align: center;">
-                    <a href="signup.html" style="text-decoration: none;color: white;">
+                    <a href="./signup" style="text-decoration: none;color: white;">
                     <button><b>Create Account</b></button></a>
                 </div>
 
             </div>
         </div>
         <div class="UR-login-img">
-            <img src="static/Assets/BNG/Peachy_20241017_002638123.jpg" alt="">
+            <img src="{% static 'Assets/BNG/Peachy_20241017_002638123.jpg' %}" alt="">
         </div>
     </div>
+    <!-- script -->
+    <script src="{% static 'script.js' %}"></script>
 </body>
 
 </html>
