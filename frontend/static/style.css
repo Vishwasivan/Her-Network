@@ -33,7 +33,6 @@ body {
     align-items: center;
     background-color: rgba(255, 255, 255, 0.61);
     border-radius: 30px 0px 0px 30px;
-
 }
 
 .Login {
@@ -41,6 +40,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+
 }
 
 .con-UR {
@@ -48,9 +48,9 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 30px;
+    gap: 5px;
     justify-content: center;
-
+    padding: 20px;
 
 }
 
@@ -129,6 +129,7 @@ button:hover {
 .UR-login-img img {
     width: 100%;
     border-radius: 0px 30px 30px 0px;
+    height: -webkit-fill-available;
 }
 
 /************************************** index ***********************************/
@@ -448,7 +449,61 @@ button:hover {
 
 
 
+.connection-reqst-list{
+    position: fixed;
+    top: 30%;
+    left: 30%;
+    background-color:#f1f1f1 ;
+    border: solid white 6px;
+    display: none;
+    gap:20px;
+    flex-direction: column;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+    width: 450px;
 
+}
+.connection-reqst{
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    border-bottom: solid #ad74fc9a 1px;
+    padding: 15px;
+}
+
+.connection-reqst .Request-chat{
+    display: none;
+    color: #ac74fc;
+    font-weight: 800;
+    font-size: larger;
+    cursor: pointer;
+}
+.connection-reqst #Request-chat:hover{
+    font-size: large;
+
+}
+.reqst-button{
+    display:flex;
+    gap: 10px;
+}
+.connection-reqst-list-close{
+    height: 0px;
+    position: relative;
+    top: -32px;
+    left: -40px;
+    cursor: pointer;
+    color: white;
+}
+.connection-reqst-list-close:hover{
+    color: #4A4A4A;
+    font-size: large;
+}
+.connection-reqst-list-close i{
+    background-color: #ac74fc;
+    padding: 10px;
+    border-radius: 50%;
+}
 
 
 
@@ -467,6 +522,7 @@ button:hover {
     padding: 5px;
     border-radius: 10px;
     box-shadow: 10px 13px 32px rgb(88, 88, 88);
+    z-index: 1;
   }
 
 .chat{
@@ -908,9 +964,14 @@ input[type="file"] {
 }
 .nav-search input{
     width: 90%;
+    padding-left: 20px;
     height: 50px;
     border-radius: 10px 0px 0px 10px;
 }
+.nav-search input::placeholder {
+    font-size: 15px;
+    
+  }
 .nav-search i{
     padding: 19px;
     border-radius: 0px 10px 10px 0px;
@@ -920,6 +981,7 @@ input[type="file"] {
   width: 30%;
   display: flex;
   justify-content: space-evenly;
+  
 }
 .nav-other a{
     cursor: pointer;
@@ -952,7 +1014,6 @@ input[type="file"] {
     flex-direction: column;
     justify-content: center;
     min-width: 170px;
-    
 }
 .post-box img{
     width: 150px;
@@ -961,4 +1022,115 @@ input[type="file"] {
 }
 .post-box h4,p,h3{
     margin: 5px;
+}
+
+
+
+
+.connection-status-list{
+    background-color: #f1f1f1;
+    border: solid white 7px;
+    padding:25px;
+    position: fixed;
+    top: 30vh;
+    left: 30%;
+    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+    display: none;
+    flex-direction: column;
+    border-radius: 10px;
+    
+}
+
+.connection-status{
+    padding: 10px;
+    display: flex;
+    gap: 50px;
+    justify-content: space-between;
+    border-bottom: solid 1px #ad74fc9c;
+}
+
+.connection-status-list .CSL-Accpt a{
+    color: #ac74fc;
+    font-weight: 800;
+    cursor: pointer;
+}
+.connection-status-list .CSL-Wait a{
+    color: #4a4a4a48;
+}
+
+.connection-status-list h3{
+    color: #ac74fc;
+}
+#connection-status-list-close i{
+    margin: 0px;
+    position: relative;
+    color: white;
+    top: -65px;
+    left: -35px;
+    background-color: #ac74fc;
+    border: none;
+    padding: 7px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+#connection-status-list-close i:hover{
+    color: #4A4A4A;
+    font-size: large;
+}
+#connection-status-list-close {
+    margin: 0px;
+    height: 0px;
+}
+.tasker-noti{
+    display: none;
+}
+.tasker-noti .notivication{
+    position: fixed;
+    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+    bottom: 10px;
+    right: 20px;
+    width: 300px;
+}
+.notivication a{
+    height: 0px;
+    margin: 0px;
+}
+.notivication a i{
+    background-color: #ac74fc;
+    padding: 10px;
+    border-radius: 50%;
+    position: relative;
+    top: -30px;
+    right: -290px;
+    cursor: pointer;
+    color: white;
+}
+.tasker-pro-info{
+    position: fixed;
+    top: 50px;
+    right: 200px;
+    padding: 20px;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+    display: none;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    border-radius: 20px;
+}
+.tasker-pro-info img{
+    width: 70px;
+    border-radius: 50%;
+    border: solid #ac74fc 4px;
+    box-shadow: rgba(0, 0, 0, 0.56) 0px 25px 70px 4px;
+}
+.tasker-pro-info a{
+    position: relative;
+    top: -110px;
+    left: -70px;
+    color: white;
+    cursor: pointer;
+    background-color: #ac74fc;
+    padding: 7px;
+    border-radius: 50%;
 }
