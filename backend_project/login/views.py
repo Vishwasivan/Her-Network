@@ -3,6 +3,7 @@ from django.contrib.auth.models import User,auth
 from django.contrib import messages
 from django.contrib.auth import authenticate
 from .models import Login_detail
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
@@ -41,17 +42,20 @@ def signuppage(request):
 
 
 def login(request):
+    print(request.POST)
     if request.method=='POST':
         email=request.POST['Uemail']
         password=request.POST['Upsw']
-        login= authenticate(request,email=email,password=password)
         if Login_detail.objects.filter(email=email,password=password).exists():
-            return redirect('index')
+            login=Login_detail.objects.get(email=email)
+            if login.role=='Housewife':
+                return redirect(service,login.id)
+            else:
+                return redirect(task,login.id)
+            
         else:
             messages.info(request,"cannot login") 
     return render(request,'login.html')
-
-
 
 
 def indexpage(request):
@@ -60,8 +64,30 @@ def indexpage(request):
 def signup(request):
     return render(request,'signup.html')
 
-def service(request):
-    return render(request,'servicerPG.html')
+# @login_required(login_url='login')
+def service(request,pk):
+    userid=Login_detail.objects.get(id=pk)
+    return render(request,'servicerPG.html',{'user':userid})
 
-def s3(request):
-    return render(request,'taskerPG.html')
+# @login_required(login_url='login')
+def task(request,pk):
+    userid=Login_detail.objects.get(id=pk)
+    return render(request,'taskerPG.html',{'user':userid})
+
+
+
+# for change the name
+# def proflic_change(request):
+#     print(request.POST)
+#     if request.method=='POST':
+#         login = Login_detail.objects.get(id=17)
+#         if request.POST['username']:
+#             newname=request.POST['username']
+#             login.name=newname
+#             login.save()
+#         return  render(request,'servicerPG.html')
+            
+    
+#     return  render(request,'servicerPG.html')
+            
+#         password=request.POST['userPassword']

@@ -55,7 +55,7 @@ ROOT_URLCONF = 'backend_project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['D:/Her network/Her-Network/frontend/',],
+        'DIRS': ['../frontend/',],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -119,7 +119,7 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     
-    "D:/Her network/Her-Network/frontend/static/",
+    "../frontend/static/",
 ]
 
 # Default primary key field type

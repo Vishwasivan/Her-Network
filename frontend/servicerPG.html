@@ -163,8 +163,8 @@
 
                 <div>
                     <img src="{% static 'Assets/Usser profile pic2.jpg' %}" alt="">
-                    <h1 style="margin: 0px;">User Name</h1>
-                    <p><i class="fa-solid fa-envelope"></i>user@gmail.com</p>
+                    <h1 style="margin: 0px;">{{ user.name }}</h1>
+                    <p><i class="fa-solid fa-envelope"></i>{{ user.email }}</p>
                 </div>
                 <button onclick="document.location='index.html'">
                     <h4 style="margin: 0px;"><i class="fa-solid fa-right-from-bracket"></i>LOGOUT</h4>
@@ -287,9 +287,9 @@
                 <input id="file-upload" type="file">
             </div>
 
-            <input type="text" id="userName" placeholder="Enter your name" required>
-            <input type="email" id="userEmail" placeholder="Enter your email" required>
-            <input type="password" id="userPassword" placeholder="Enter new password" required>
+            <input type="text" id="userName" placeholder="{{ user.name }}" required>
+            <input type="email" id="userEmail" placeholder="{{ user.email}}" required>
+            <input type="password" id="userPassword" placeholder="New password" required>
 
             <label for="userLocation">Location</label>
             <select id="userLocation" required>

@@ -9,3 +9,4 @@ class Login_detail(models.Model):
     role = models.CharField(max_length=10)
     skill = models.CharField(max_length=10)
     password = models.CharField( max_length=50,)
+    location = models.CharField( max_length=50,default='none',null=True,blank=True)

@@ -361,9 +361,9 @@
     <div class="tasker-pro-info" id="tasker-pro-info">
         <img src="{% static 'Assets/Usser profile pic2.jpg' %}" alt="">
         <a onclick="closeProInfo()"><i class="fa-solid fa-xmark"></i></a>
-        <h4 style="margin: 5px;">User Name</h4>
-        <p>user@mail.com</p>
-        <p>+91 8933337733</p>
+        <h4 style="margin: 5px;">{{ user.name }}</h4>
+        <p>{{ user.email }}</p>
+        <p>+91 {{ user.number }}</p>
     </div>
     <!-- script -->
     <script src="{% static 'script.js' %}"></script>
