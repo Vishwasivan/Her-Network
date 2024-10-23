@@ -66,8 +66,9 @@ def signup(request):
 
 # @login_required(login_url='login')
 def service(request,pk):
-    
-    
+    userid=Login_detail.objects.get(id=pk)
+    posts=Post.objects.all()
+    context={'user':userid,'posts':posts}
     print(request.POST)
     if request.method=='POST':
         titles=request.POST['serviceTitle']
@@ -76,19 +77,28 @@ def service(request,pk):
         datetime=request.POST['availability']
         price=request.POST['servicePrice']
         location=request.POST['serviceLocation']
-        post=Post.objects.create(titles=titles,description=description,wskill=wskill,datetime=datetime,price=price,location=location)
+        post=Post.objects.create(titles=titles,description=description,wskill=wskill,datetime=datetime,price=price,location=location,creater=userid.name)
         post.save()
         return render(request,'servicerPG.html')
     
-    userid=Login_detail.objects.get(id=pk)
-    return render(request,'servicerPG.html',{'user':userid})
+    
+    return render(request,'servicerPG.html',context)
 
 # @login_required(login_url='login')
 def task(request,pk):
     userid=Login_detail.objects.get(id=pk)
     posts=Post.objects.all()
     context={'user':userid,'posts':posts}
-    return render(request,'taskerPG.html',context)
+    print(request.POST)
+    if request.method=='POST':
+        servicerid=request.POST['req']
+        poster=Post.objects.get(id=servicerid)
+        poster.requests='request sended'
+        poster.accepter=userid.name
+        poster.save()
+        return render(request,'taskerPG.html',context)
+    else:
+        return render(request,'taskerPG.html',context)
 
 
 

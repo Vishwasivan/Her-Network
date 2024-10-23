@@ -34,7 +34,7 @@
             <div class="slid-list">
                 <!-- <a href=""><i class="fa-solid fa-list-check"></i>Post Task </a> -->
                  <a onclick="showuDash()"><i class="fa-solid fa-chart-line"></i>Dashboard</a>
-                <a onclick="openreqt()"><i class="fa-solid fa-link"></i>Connection Requst</a>
+                <a onclick="openreqt()"><i class="fa-solid fa-link"></i>Connection Request</a>
                 <a onclick="showChat()" id="massage"><i class="fa-solid fa-message"></i>Messages</a>
                 <a href=""><i class="fa-regular fa-comment"></i>Feedback</a>
                 <a onclick="showuBabyUpdate()"><i class="fa-solid fa-baby-carriage"></i>Baby Status Update</a>
@@ -328,16 +328,20 @@
 
 <div class="connection-reqst-list" id="connection-reqst-list">
     <a onclick="closereqt()" class="connection-reqst-list-close"><i class="fa-solid fa-xmark"></i></a>
-    <h3><i class="fa-solid fa-link"></i>Connection Requst</h3>
-    <div class="connection-reqst" id="connection-reqst-1">
-        <p>Shalni</p>
-        <div class="reqst-button" id="reqst-button-1">
-            <button onclick="reqtaccpt('reqst-button-1','Request-chat-1')">Accept</button>
-            <button onclick="reqtReject('connection-reqst-1')">reject</button>
-        </div>
-        <a class="Request-chat" onclick="showChat()"  id="Request-chat-1"><i class="fa-solid fa-message"></i>Chat</a>
-    </div>
-    <div class="connection-reqst" >
+    <h3><i class="fa-solid fa-link"></i>Connection Request</h3>
+    {% for post in posts %}
+        {% if post.creater == user.name %}
+            <div class="connection-reqst" id="connection-reqst-1">
+                <p>{{ post.accepter }}</p>
+                <div class="reqst-button" id="reqst-button-1">
+                    <button onclick="reqtaccpt('reqst-button-1','Request-chat-1')">Accept</button>
+                    <button onclick="reqtReject('connection-reqst-1')">reject</button>
+                </div>
+                <a class="Request-chat" onclick="showChat()"  id="Request-chat-1"><i class="fa-solid fa-message"></i>Chat</a>
+            </div>
+        {% endif %}
+    {% endfor %}
+    <!-- <div class="connection-reqst" >
         <p>jeni</p>
         <div class="reqst-button" id="reqst-button-2">
             <button onclick="reqtaccpt('reqst-button-2','Request-chat-2')">Accept</button>
@@ -352,7 +356,7 @@
             <button onclick="reqtReject('connection-reqst-3')">reject</button>
         </div>
         <a class="Request-chat" onclick="showChat()" id="Request-chat-3"><i class="fa-solid fa-message"></i>Chat</a>
-    </div>
+    </div> -->
 </div>
 <!-- script -->
 <script src="{% static 'script.js' %}"></script>

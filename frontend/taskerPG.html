@@ -86,7 +86,10 @@
                     <p>{{ post.titles }}</p>
                     <h4><i class="fa-solid fa-location-dot"></i>{{ post.location }}</h4>
                     <h3><i class="fa-solid fa-indian-rupee-sign"></i>{{ post.price }}</h3>
-                    <button id="{{ post.id }}" class="requestb" onclick="requestbutton({{ post.id }})">Grow Together</button>
+                    <form action="" method="post">
+                    {% csrf_token %}
+                        <button type="submit" name="req" value="{{ post.id }}" data-id="{{ post.id }}" id="{{ post.id }}" class="requestb" onclick="requestbutton(this)">Grow Together</button>
+                    </form>
                 </div>
                 {% endfor %}
                 
@@ -196,26 +199,32 @@
     <div class="connection-status-list" id="connection-status-list">
         <h3><i class="fa-solid fa-link"></i>Connection Request Status</h3>
         <a id="connection-status-list-close" onclick="closeConnection()"><i class="fa-solid fa-xmark"></i></a>
-        <div class="connection-status CSL-Wait" >
-            <p>Your Connection Request To Merry Is Watting For Responce</p>
-            <a onclick="" id="massage"><i class="fa-solid fa-message"></i>Chat</a>
-        </div>
-        <div class="connection-status CSL-Accpt" >
-            <p>Your Connection Request To Jeni Has Accpted </p>
-            <a onclick="showChat()" id="massage"><i class="fa-solid fa-message"></i>Chat</a>
-        </div>
-        <div class="connection-status CSL-Dcl" >
-            <p>Your Connection Request To Priya Has Declined </p>
-            <a onclick="" id="massage"><i class="fa-solid fa-ban"></i></a>
-        </div>
-        <div class="connection-status CSL-Wait" >
+        {% for post in posts %}
+        {% if post.requests == 'request sended' %}
+            <div class="connection-status CSL-Wait" >
+                <p>Your Connection Request To {{ post.creater }} is Watting For Responce</p>
+                <a onclick="" id="massage"><i class="fa-solid fa-message"></i>Chat</a>
+            </div>
+        {% elif post.requests == 'request accepted' %}
+            <div class="connection-status CSL-Accpt" >
+                <p>Your Connection Request To {{ post.creater }} Has Accpted </p>
+                <a onclick="showChat()" id="massage"><i class="fa-solid fa-message"></i>Chat</a>
+            </div>
+        {% else %}
+            <div class="connection-status CSL-Dcl" >
+                <p>Your Connection Request To {{ post.creater }} Has Declined </p>
+                <a onclick="" id="massage"><i class="fa-solid fa-ban"></i></a>
+            </div>
+        {% endif %}
+        {% endfor %}
+        <!-- <div class="connection-status CSL-Wait" >
             <p>Your Connection Request To Madhusha Is Watting For Responce</p>
             <a onclick="" id="massage"><i class="fa-solid fa-message"></i>Chat</a>
         </div>
         <div class="connection-status CSL-Accpt" >
             <p>Your Connection Request To Pardhana Has Accpted </p>
             <a onclick="showChat()" id="massage"><i class="fa-solid fa-message"></i>Chat</a>
-        </div>
+        </div> -->
     </div>
 
 

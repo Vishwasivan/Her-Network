@@ -19,4 +19,6 @@ class Post(models.Model):
     datetime = models.DateTimeField()
     price = models.FloatField()
     location = models.CharField(max_length=50)
-    
+    requests = models.CharField(default='post',max_length=50,null=True,blank=True)
+    accepter = models.CharField(max_length=50,default='unknown')
+    creater = models.CharField(max_length=50,default='unknown')
