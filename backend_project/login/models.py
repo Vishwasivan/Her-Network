@@ -5,8 +5,18 @@ from django.core.validators import MaxValueValidator
 class Login_detail(models.Model):
     name = models.CharField(max_length=20)
     email = models.EmailField(max_length=254)
-    number = models.IntegerField(default=False,validators=[MaxValueValidator(10)] )
+    number = models.IntegerField(default=False,validators=[MaxValueValidator(10)])
     role = models.CharField(max_length=10)
     skill = models.CharField(max_length=10)
     password = models.CharField( max_length=50,)
     location = models.CharField( max_length=50,default='none',null=True,blank=True)
+    
+
+class Post(models.Model):
+    titles = models.CharField(max_length=20)
+    description = models.CharField(max_length=50)
+    wskill = models.CharField(max_length=30)
+    datetime = models.DateTimeField()
+    price = models.FloatField()
+    location = models.CharField(max_length=50)
+    

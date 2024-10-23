@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from django.contrib.auth.models import User,auth
 from django.contrib import messages
 from django.contrib.auth import authenticate
-from .models import Login_detail
+from .models import Login_detail, Post
 from django.contrib.auth.decorators import login_required
 
 
@@ -66,13 +66,29 @@ def signup(request):
 
 # @login_required(login_url='login')
 def service(request,pk):
+    
+    
+    print(request.POST)
+    if request.method=='POST':
+        titles=request.POST['serviceTitle']
+        description=request.POST['serviceDescription']
+        wskill=request.POST['skills']
+        datetime=request.POST['availability']
+        price=request.POST['servicePrice']
+        location=request.POST['serviceLocation']
+        post=Post.objects.create(titles=titles,description=description,wskill=wskill,datetime=datetime,price=price,location=location)
+        post.save()
+        return render(request,'servicerPG.html')
+    
     userid=Login_detail.objects.get(id=pk)
     return render(request,'servicerPG.html',{'user':userid})
 
 # @login_required(login_url='login')
 def task(request,pk):
     userid=Login_detail.objects.get(id=pk)
-    return render(request,'taskerPG.html',{'user':userid})
+    posts=Post.objects.all()
+    context={'user':userid,'posts':posts}
+    return render(request,'taskerPG.html',context)
 
 
 

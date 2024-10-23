@@ -233,27 +233,28 @@
                 <i id="close" style="top:-44px; left:12%;" onclick="closeServiceModal()" class="fa-solid fa-xmark"></i>
                 <!-- <button class="close-button" onclick="closeServiceModal()">&times;</button> -->
             </div>
-            <form onsubmit="submitService(event)">
+            <form method="post">
+                {% csrf_token %}
                 <label for="serviceTitle">Service Title</label>
-                <input type="text" id="serviceTitle" placeholder="Enter Service Title" required>
+                <input type="text" id="serviceTitle" name="serviceTitle" placeholder="Enter Service Title" required>
 
                 <label for="serviceDescription">Description</label>
-                <textarea id="serviceDescription" placeholder="Describe your service" required></textarea>
+                <input type="text" id="serviceDescription" name="serviceDescription" placeholder="Describe your service" required>
 
-                <label for="serviceImage">Upload Image</label>
-                <input type="file" id="serviceImage" accept="image/*" required>
+                <!-- <label for="serviceImage">Upload Image</label>
+                <input type="file" id="serviceImage" accept="image/*" required> -->
 
                 <label for="skills">Skills (comma-separated)</label>
-                <input type="text" id="skills" placeholder="e.g., Cooking, Babysitting, Cleaning" required>
+                <input type="text" id="skills" name="skills" placeholder="e.g., Cooking, Babysitting, Cleaning" required>
 
                 <label for="availability">Availability</label>
-                <input type="text" id="availability" placeholder="e.g., Mon-Fri, 10 AM - 5 PM" required>
+                <input type="datetime-local" id="availability" name="availability" placeholder="e.g., Mon-Fri, 10 AM - 5 PM" required>
 
                 <label for="servicePrice">Price (INR)</label>
-                <input type="number" id="servicePrice" placeholder="Enter Price" required>
+                <input type="number" id="servicePrice" name="servicePrice" placeholder="Enter Price" required>
 
                 <label for="serviceLocation">Location</label>
-                <select id="serviceLocation" required>
+                <select id="serviceLocation" name="serviceLocation" required>
                     <option value="">Select Location</option>
                     <option value="Adyar">Adyar</option>
                     <option value="Anna Nagar">Anna Nagar</option>

@@ -80,148 +80,23 @@
                 </div>
             </div>
             <div class="tasker-feeds">
+                {% for post in posts %}
                 <div class="post-box" id="tasker-feeds">
                     <img src="{% static 'Assets/cooking.jpg' %}" alt="">
-                    <p>Lorem ipsum dolor sit amet</p>
-                    <h4><i class="fa-solid fa-location-dot"></i>Guindy</h4>
-                    <h3><i class="fa-solid fa-indian-rupee-sign"></i>7000</h3>
-                    <button><i class="fa-solid fa-link"></i>Grow Together</button>
+                    <p>{{ post.titles }}</p>
+                    <h4><i class="fa-solid fa-location-dot"></i>{{ post.location }}</h4>
+                    <h3><i class="fa-solid fa-indian-rupee-sign"></i>{{ post.price }}</h3>
+                    <button id="{{ post.id }}" class="requestb" onclick="requestbutton({{ post.id }})">Grow Together</button>
                 </div>
-                <div class="post-box" id="tasker-feeds">
-                    <img src="{% static 'Assets/cleaning.avif' %}" alt="">
-                    <p>Lorem ipsum dolor sit amet</p>
-                    <h4><i class="fa-solid fa-location-dot"></i>Adaiyar</h4>
-                    <h3><i class="fa-solid fa-indian-rupee-sign"></i>10000</h3>
-                    <button><i class="fa-solid fa-link"></i>Grow Together</button>
-                </div>
-                <div class="post-box" id="tasker-feeds">
-                    <img src="{% static 'Assets/teaching.jpg' %}" alt="">
-                    <p>Lorem ipsum dolor sit amet</p>
-                    <h4><i class="fa-solid fa-location-dot"></i>Veallachey</h4>
-                    <h3><i class="fa-solid fa-indian-rupee-sign"></i>5000</h3>
-                    <button><i class="fa-solid fa-link"></i>Grow Together</button>
-                </div>
-                <div class="post-box" id="tasker-feeds">
-                    <img src="{% static 'Assets/babycare.jpg' %}" alt="">
-                    <p>Lorem ipsum dolor sit amet</p>
-                    <h4><i class="fa-solid fa-location-dot"></i>Thambarm</h4>
-                    <h3><i class="fa-solid fa-indian-rupee-sign"></i>8000</h3>
-                    <button><i class="fa-solid fa-link"></i>Grow Together</button>
-                </div>
-                <div class="post-box" id="tasker-feeds">
-                    <img src="{% static 'Assets/other.jpg' %}" alt="">
-                    <p>Lorem ipsum dolor sit amet</p>
-                    <h4><i class="fa-solid fa-location-dot"></i>Guindy</h4>
-                    <h3><i class="fa-solid fa-indian-rupee-sign"></i>12000</h3>
-                    <button><i class="fa-solid fa-link"></i>Grow Together</button>
-                </div>
-
-                <div class="post-box" id="tasker-feeds">
-                    <img src="{% static 'Assets/babycare.jpg' %}" alt="">
-                    <p>Lorem ipsum dolor sit amet</p>
-                    <h4><i class="fa-solid fa-location-dot"></i>Ramapuaram</h4>
-                    <h3><i class="fa-solid fa-indian-rupee-sign"></i>8000</h3>
-                    <button><i class="fa-solid fa-link"></i>Grow Together</button>
-                </div>
-                <div class="post-box" id="tasker-feeds">
-                    <img src="{% static 'Assets/other.jpg' %}" alt="">
-                    <p>Lorem ipsum dolor sit amet</p>
-                    <h4><i class="fa-solid fa-location-dot"></i>Pour</h4>
-                    <h3><i class="fa-solid fa-indian-rupee-sign"></i>12000</h3>
-                    <button><i class="fa-solid fa-link"></i>Grow Together</button>
-                </div>
-                <div class="post-box" id="tasker-feeds">
-                    <img src="{% static 'Assets/cooking.jpg' %}" alt="">
-                    <p>Lorem ipsum dolor sit amet</p>
-                    <h4><i class="fa-solid fa-location-dot"></i>Guindy</h4>
-                    <h3><i class="fa-solid fa-indian-rupee-sign"></i>7000</h3>
-                    <button><i class="fa-solid fa-link"></i>Grow Together</button>
-                </div>
-                <div class="post-box" id="tasker-feeds">
-                    <img src="{% static 'Assets/cleaning.avif' %}" alt="">
-                    <p>Lorem ipsum dolor sit amet</p>
-                    <h4><i class="fa-solid fa-location-dot"></i>Tambaram</h4>
-                    <h3><i class="fa-solid fa-indian-rupee-sign"></i>10000</h3>
-                    <button><i class="fa-solid fa-link"></i>Grow Together</button>
-                </div>
-                <div class="post-box" id="tasker-feeds">
-                    <img src="{% static 'Assets/teaching.jpg' %}" alt="">
-                    <p>Lorem ipsum dolor sit amet</p>
-                    <h4><i class="fa-solid fa-location-dot"></i>Potheri</h4>
-                    <h3><i class="fa-solid fa-indian-rupee-sign"></i>5000</h3>
-                    <button><i class="fa-solid fa-link"></i>Grow Together</button>
-                </div>
-                <div class="post-box" id="tasker-feeds">
-                    <img src="{% static 'Assets/cooking.jpg' %}" alt="">
-                    <p>Lorem ipsum dolor sit amet</p>
-                    <h4><i class="fa-solid fa-location-dot"></i>Vellacheri</h4>
-                    <h3><i class="fa-solid fa-indian-rupee-sign"></i>7000</h3>
-                    <button><i class="fa-solid fa-link"></i>Grow Together</button>
-                </div>
-                <div class="post-box" id="tasker-feeds">
-                    <img src="{% static 'Assets/cleaning.avif' %}" alt="">
-                    <p>Lorem ipsum dolor sit amet</p>
-                    <h4><i class="fa-solid fa-location-dot"></i>Porur</h4>
-                    <h3><i class="fa-solid fa-indian-rupee-sign"></i>10000</h3>
-                    <button><i class="fa-solid fa-link"></i>Grow Together</button>
-                </div>
-                <div class="post-box" id="tasker-feeds">
-                    <img src="{% static 'Assets/teaching.jpg' %}" alt="">
-                    <p>Lorem ipsum dolor sit amet</p>
-                    <h4><i class="fa-solid fa-location-dot"></i>guindy</h4>
-                    <h3><i class="fa-solid fa-indian-rupee-sign"></i>5000</h3>
-                    <button><i class="fa-solid fa-link"></i>Grow Together</button>
-                </div>
-                <div class="post-box" id="tasker-feeds">
-                    <img src="{% static 'Assets/babycare.jpg' %}" alt="">
-                    <p>Lorem ipsum dolor sit amet</p>
-                    <h4><i class="fa-solid fa-location-dot"></i>guindy</h4>
-                    <h3><i class="fa-solid fa-indian-rupee-sign"></i>8000</h3>
-                    <button><i class="fa-solid fa-link"></i>Grow Together</button>
-                </div>
-                <div class="post-box" id="tasker-feeds">
-                    <img src="{% static 'Assets/other.jpg' %}" alt="">
-                    <p>Lorem ipsum dolor sit amet</p>
-                    <h4><i class="fa-solid fa-location-dot"></i>Guindy</h4>
-                    <h3><i class="fa-solid fa-indian-rupee-sign"></i>12000</h3>
-                    <button><i class="fa-solid fa-link"></i>Grow Together</button>
-                </div>
-
-                <div class="post-box" id="tasker-feeds">
-                    <img src="{% static 'Assets/babycare.jpg' %}" alt="">
-                    <p>Lorem ipsum dolor sit amet</p>
-                    <h4><i class="fa-solid fa-location-dot"></i>Guindy</h4>
-                    <h3><i class="fa-solid fa-indian-rupee-sign"></i>8000</h3>
-                    <button><i class="fa-solid fa-link"></i>Grow Together</button>
-                </div>
-                <div class="post-box" id="tasker-feeds">
-                    <img src="{% static 'Assets/other.jpg' %}" alt="">
-                    <p>Lorem ipsum dolor sit amet</p>
-                    <h4><i class="fa-solid fa-location-dot"></i>Ramapuaram</h4>
-                    <h3><i class="fa-solid fa-indian-rupee-sign"></i>12000</h3>
-                    <button><i class="fa-solid fa-link"></i>Grow Together</button>
-                </div>
-                <div class="post-box" id="tasker-feeds">
-                    <img src="{% static 'Assets/cooking.jpg' %}" alt="">
-                    <p>Lorem ipsum dolor sit amet</p>
-                    <h4><i class="fa-solid fa-location-dot"></i>Guindy</h4>
-                    <h3><i class="fa-solid fa-indian-rupee-sign"></i>7000</h3>
-                    <button><i class="fa-solid fa-link"></i>Grow Together</button>
-                </div>
-                <div class="post-box" id="tasker-feeds">
-                    <img src="{% static 'Assets/cleaning.avif' %}" alt="">
-                    <p>Lorem ipsum dolor sit amet</p>
-                    <h4><i class="fa-solid fa-location-dot"></i>Tambaram</h4>
-                    <h3><i class="fa-solid fa-indian-rupee-sign"></i>10000</h3>
-                    <button><i class="fa-solid fa-link"></i>Grow Together</button>
-                </div>
-                <div class="post-box" id="tasker-feeds">
+                {% endfor %}
+                
+                <!-- <div class="post-box" id="tasker-feeds">
                     <img src="{% static 'Assets/teaching.jpg' %}" alt="">
                     <p>Lorem ipsum dolor sit amet</p>
                     <h4><i class="fa-solid fa-location-dot"></i>Vellacheri</h4>
                     <h3><i class="fa-solid fa-indian-rupee-sign"></i>5000</h3>
                     <button><i class="fa-solid fa-link"></i>Grow Together</button>
-                </div>
+                </div> -->
 
             </div>
         </div>

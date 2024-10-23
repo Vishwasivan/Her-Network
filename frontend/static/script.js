@@ -244,3 +244,9 @@ function closeProInfo() {
     const taskerinfo = document.getElementById("tasker-pro-info")
     taskerinfo.style.display = "none"
 }
+
+function requestbutton(id){
+    const b = document.getElementById(id);
+    b.innerHTML='request sented'
+}
+
