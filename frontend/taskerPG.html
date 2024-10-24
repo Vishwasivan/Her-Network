@@ -89,6 +89,15 @@
                     <form action="" method="post">
                     {% csrf_token %}
                         <button type="submit" name="req" value="{{ post.id }}" data-id="{{ post.id }}" id="{{ post.id }}" class="requestb" onclick="requestbutton(this)">Grow Together</button>
+                            {% for author in post.authors.all %}
+                                    {% if author.requests == user.id|stringformat:"s" %}
+                                        <script>
+                                            document.querySelector('.requestb').innerHTML=' request sended'
+                                        </script>
+                                        
+                                    {% endif %}
+                            {% endfor %}
+                        
                     </form>
                 </div>
                 {% endfor %}
@@ -205,12 +214,12 @@
                 <p>Your Connection Request To {{ post.creater }} is Watting For Responce</p>
                 <a onclick="" id="massage"><i class="fa-solid fa-message"></i>Chat</a>
             </div>
-        {% elif post.requests == 'request accepted' %}
+        {% elif post.requests == 'accepted' %}
             <div class="connection-status CSL-Accpt" >
                 <p>Your Connection Request To {{ post.creater }} Has Accpted </p>
                 <a onclick="showChat()" id="massage"><i class="fa-solid fa-message"></i>Chat</a>
             </div>
-        {% else %}
+        {% elif post.requests == 'rejected' %}
             <div class="connection-status CSL-Dcl" >
                 <p>Your Connection Request To {{ post.creater }} Has Declined </p>
                 <a onclick="" id="massage"><i class="fa-solid fa-ban"></i></a>

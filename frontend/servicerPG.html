@@ -331,14 +331,19 @@
     <h3><i class="fa-solid fa-link"></i>Connection Request</h3>
     {% for post in posts %}
         {% if post.creater == user.name %}
-            <div class="connection-reqst" id="connection-reqst-1">
-                <p>{{ post.accepter }}</p>
-                <div class="reqst-button" id="reqst-button-1">
-                    <button onclick="reqtaccpt('reqst-button-1','Request-chat-1')">Accept</button>
-                    <button onclick="reqtReject('connection-reqst-1')">reject</button>
+            {% if post.requests == 'request sended' %}
+                <div class="connection-reqst" id="connection-reqst-1">
+                    <p>{{ post.accepter }}</p>
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        <div class="reqst-button" id="reqst-button-1">
+                            <button type="submit" value="accept" name="acceptorrejectbutton" onclick="reqtaccpt('reqst-button-1','Request-chat-1')">Accept</button>
+                            <button type="submit" value="reject" name="acceptorrejectbutton" onclick="reqtReject('connection-reqst-1')">reject</button>
+                        </div>
+                    </form>
+                    <a class="Request-chat" onclick="showChat()"  id="Request-chat-1"><i class="fa-solid fa-message"></i>Chat</a>
                 </div>
-                <a class="Request-chat" onclick="showChat()"  id="Request-chat-1"><i class="fa-solid fa-message"></i>Chat</a>
-            </div>
+            {% endif %}
         {% endif %}
     {% endfor %}
     <!-- <div class="connection-reqst" >

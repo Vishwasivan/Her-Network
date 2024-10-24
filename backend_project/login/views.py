@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from django.contrib.auth.models import User,auth
 from django.contrib import messages
 from django.contrib.auth import authenticate
-from .models import Login_detail, Post
+from .models import Login_detail, Post, Author
 from django.contrib.auth.decorators import login_required
 
 
@@ -71,30 +71,39 @@ def service(request,pk):
     context={'user':userid,'posts':posts}
     print(request.POST)
     if request.method=='POST':
-        titles=request.POST['serviceTitle']
-        description=request.POST['serviceDescription']
-        wskill=request.POST['skills']
-        datetime=request.POST['availability']
-        price=request.POST['servicePrice']
-        location=request.POST['serviceLocation']
-        post=Post.objects.create(titles=titles,description=description,wskill=wskill,datetime=datetime,price=price,location=location,creater=userid.name)
-        post.save()
-        return render(request,'servicerPG.html')
-    
-    
+        #creating the post
+        if 'serviceTitle' in request.POST:
+            titles=request.POST['serviceTitle']
+            description=request.POST['serviceDescription']
+            wskill=request.POST['skills']
+            datetime=request.POST['availability']
+            price=request.POST['servicePrice']
+            location=request.POST['serviceLocation']
+            post=Post.objects.create(titles=titles,description=description,wskill=wskill,datetime=datetime,price=price,location=location,creater=userid.id)
+            post.save()
+        #button for accept and reject
+        if 'acceptorrejectbutton' in request.POST:
+            status=request.POST['acceptorrejectbutton']
+            cpost=Post.objects.get(creater=userid.id)
+            if status=='accept':
+                cpost.requests='accepted'
+            elif status=='reject':
+                cpost.requests='rejected'
+            cpost.save()
     return render(request,'servicerPG.html',context)
 
 # @login_required(login_url='login')
 def task(request,pk):
     userid=Login_detail.objects.get(id=pk)
-    posts=Post.objects.all()
+    posts = Post.objects.prefetch_related('authors').all()
     context={'user':userid,'posts':posts}
     print(request.POST)
     if request.method=='POST':
         servicerid=request.POST['req']
         poster=Post.objects.get(id=servicerid)
-        poster.requests='request sended'
-        poster.accepter=userid.name
+        author1=Author.objects.create(requests=pk)
+        poster.authors.add(author1)
+
         poster.save()
         return render(request,'taskerPG.html',context)
     else:

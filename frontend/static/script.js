@@ -245,9 +245,9 @@ function closeProInfo() {
     taskerinfo.style.display = "none"
 }
 
-function requestbutton(button){
-    const id = button.dataset.id
-    const b = document.getElementById(id);
-    b.innerHTML='request sented'
-}
+// function requestbutton(button){
+//     const id = button.dataset.id
+//     const b = document.getElementById(id);
+//     b.innerHTML='request sented'
+// }
 

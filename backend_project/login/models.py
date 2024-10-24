@@ -12,6 +12,11 @@ class Login_detail(models.Model):
     location = models.CharField( max_length=50,default='none',null=True,blank=True)
     
 
+class Author(models.Model):
+    requests = models.CharField(default='post',max_length=50,null=True,blank=True)
+    
+    
+
 class Post(models.Model):
     titles = models.CharField(max_length=20)
     description = models.CharField(max_length=50)
@@ -19,6 +24,7 @@ class Post(models.Model):
     datetime = models.DateTimeField()
     price = models.FloatField()
     location = models.CharField(max_length=50)
-    requests = models.CharField(default='post',max_length=50,null=True,blank=True)
+    authors = models.ManyToManyField(Author)
     accepter = models.CharField(max_length=50,default='unknown')
     creater = models.CharField(max_length=50,default='unknown')
+    
