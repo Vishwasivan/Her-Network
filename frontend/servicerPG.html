@@ -169,9 +169,10 @@
                 
                 <div>
                     <img src="{% static 'Assets/Usser profile pic2.jpg' %}" alt="">
-                    <h1 style="margin: 0px;">{{ user.name }}<i
-                            style="font-size: medium; color: #9348ff; margin-left: 5px;"
-                            class="fa-solid fa-circle-check"></i></h1>
+                    <h1 style="margin: 0px; font-size: large;padding-left: 4px">{{ user.name }}
+                    {% if mno %}
+                    <i style="font-size: medium; color: #9348ff; margin-left: 5px;" class="fa-solid fa-circle-check"></i></h1>
+                    {% endif %}
                     <p><i class="fa-solid fa-envelope"></i>{{ user.email }}</p>
                 </div>
                 <button onclick="document.location='index.html'">
@@ -491,6 +492,7 @@
                 <div class="auth-pop-ele">
                     <label for="mobile_number">Phone Number:</label>
                     <input type="text" id="mobile_number" name="mobile_number" placeholder="Enter your phone No" required>
+                    <input type="hidden" name="userid" value="{{user.id}}">
                 </div>
                 <div class="auth-pop-ele">
                     <label for="fileUpload">Upload Your Aadhar:</label>

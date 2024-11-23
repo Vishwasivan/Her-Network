@@ -67,7 +67,8 @@ def service(request,pk):
     userid=Login_detail.objects.get(id=pk)
     posts=Post.objects.all()
     auth = Author.objects.all()
-    context={'userdetail':userdetail,'user':userid,'posts':posts,'authors':auth}
+    mno = AadhaarVerification.objects.filter(userid=pk).exists()
+    context={'userdetail':userdetail,'user':userid,'posts':posts,'authors':auth,'mno':mno}
     print(request.POST)
     if request.method=='POST':
         #creating the post
@@ -117,7 +118,8 @@ def task(request,pk):
     userid=Login_detail.objects.get(id=pk)
     posts = Post.objects.all()
     auth = Author.objects.all()
-    context={'userdetail':userdetail,'user':userid,'posts':posts,'authors':auth}
+    mno = AadhaarVerification.objects.filter(userid=pk).exists()
+    context={'userdetail':userdetail,'user':userid,'posts':posts,'authors':auth,'mno':mno}
     print(request.POST)
     if request.method=='POST':
         if 'req' in request.POST:
@@ -173,6 +175,7 @@ def verify_aadhaar_mobile(request):
     if request.method == "POST":
         aadhaar_number = request.POST['aadhaar_number']
         mobile_number = request.POST['mobile_number']
+        userid = request.POST['userid']
         file_upload = request.FILES['fileUpload']
 
         # Save uploaded file
@@ -187,6 +190,7 @@ def verify_aadhaar_mobile(request):
         verification = AadhaarVerification.objects.create(
             aadhaar_number=aadhaar_number,
             mobile_number=mobile_number,
+            userid=userid,
             otp=otp
         )
 

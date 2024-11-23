@@ -234,7 +234,9 @@
         <img src="{% static 'Assets/Usser profile pic2.jpg' %}" alt="">
         <a onclick="closeProInfo()"><i class="fa-solid fa-xmark"></i></a>
         <h4 style="margin: 5px;">{{ user.name }}</h4>
-        <i style="font-size: medium; color: #9348ff; margin-left: 5px;" class="fa-solid fa-circle-check"></i></h1>
+        {% if mno %}
+            <i style="font-size: medium; color: #9348ff; margin-left: 5px;" class="fa-solid fa-circle-check"></i></h1>
+        {% endif %}
         <p>{{ user.email }}</p>
         <p>+91 {{ user.number }}</p>
     </div>
