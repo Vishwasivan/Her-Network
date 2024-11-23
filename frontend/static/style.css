@@ -258,7 +258,44 @@ button:hover {
 .index-btn button{
     font-family: "Josefin Sans", sans-serif;
 }
+.about-dis{
+  
+}
+.about-main{
+  display: none;
+  margin: 0 auto;
+  width: 75%;
+  min-width: 300px;
+ 
+}
+.about-main span{
+  font-weight: 900;
+  color: #ac74fc;
+  font-size: larger;
+}
+.about-featur{
+  display: flex;
+  flex-direction: column;
 
+}
+.about-feature p{
+  margin: 20px 0px;
+}
+.service-main{
+  display: none;
+  margin: 0 auto;
+  width: 75%;
+  min-width: 300px;
+  
+}
+.service-main span{
+  font-weight: 900;
+  color: #ac74fc;
+  font-size: larger;
+}
+.service-main p{
+  margin: 20px 0px;
+}
 /************** dashboard *********************/
 .dash-main {
   display: flex;

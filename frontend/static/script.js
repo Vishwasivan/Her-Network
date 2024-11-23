@@ -17,7 +17,25 @@
 //     wellcm.style.display = "none";
 //     log.style.display = 'block';
 
-// }
+// }    
+   
+function aboutPGopen() {
+    const aboutMain = document.getElementById("about-main")
+    const welcomePG = document.getElementById("welcome-meg")
+    const servicePG = document.getElementById("service-main")
+    aboutMain.style.display = "block";
+    welcomePG.style.display = "none";
+    servicePG.style.display = "none";
+}
+function servicePGopen() {
+    const aboutMain = document.getElementById("about-main")
+    const welcomePG = document.getElementById("welcome-meg")
+    const servicePG = document.getElementById("service-main")
+    aboutMain.style.display = "none";
+    welcomePG.style.display = "none";
+    servicePG.style.display = "block";
+    
+}
 
 function showwellpg() {
     const regi = document.getElementById('regi');
