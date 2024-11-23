@@ -33,7 +33,6 @@
             </div>
             <div class="slid-list">
                 <!-- <a href=""><i class="fa-solid fa-list-check"></i>Post Task </a> -->
-                <a onclick="showAthu()"><i class="fa-solid fa-id-card"></i>Authentication</a>
                 <a onclick="showuDash()"><i class="fa-solid fa-chart-line"></i>Dashboard</a>
                 <a onclick="openreqt()"><i class="fa-solid fa-link"></i>Connection Request</a>
                 <a onclick="showChat()" id="massage"><i class="fa-solid fa-user-group"></i>Connection list</a>
@@ -139,9 +138,10 @@
 
 
             <div class="active-footer">
-                <div class="quvic-links">
+                <div class="quvic-links" id="quvic-link">
                     <h2 style="margin: 0px;">Quick Links</h2>
-                    <button onclick="openServiceModal()">Post New Service</button>
+                    <button style="display: none;" onclick="openServiceModal()">Post New Service</button>
+                    <button  onclick="showAthu()">Authentication</button>
                     <!-- <button onclick="listService()">List a Service</button> -->
                 </div>
 
@@ -208,6 +208,10 @@
 
         </div>
 
+        <!-- Chat Window -->
+        <!-- <div class="chat-window">
+            <iframe src="{% url 'chathome' %}" width="100%"></iframe>
+        </div> -->
     </div>
 
 
@@ -462,33 +466,35 @@
         <div class="connection-reqst-list" id="connection-reqst-list" style="display: flex;">
             <a onclick="closeChat()" class="connection-reqst-list-close"><i class="fa-solid fa-xmark"></i></a>
             <h3><i class="fa-solid fa-user-group"></i></i>Connection list</h3>
-           
-                {% for post in posts %}
-                {% if post.creater == user.id %}
-                {% if post.accepter != 0 %}
-                {% for users in userdetail %}
-                {% if users.id == post.accepter %}
-                <div class="connection-reqst" id="connection-reqst-1">
-                
-                    <div class="connection-reqst-name">
-                        <p>{{ user.name }}</p>
-                    </div>
-                    <a href="https://wa.me/{{user.number}}" class="Request-chat" id="Request-chat-3"><i class="fa-solid fa-message"></i>Chat</a>
+
+            <div class="connection-reqst" id="connection-reqst-1">
+                <div class="connection-reqst-name">
+                    <p>Bhavana</p>
                 </div>
-                {% endif %}
-                {% endfor %}
-                {% endif %}
-                {% endif %}
-                {% endfor %}
-            
+                <a class="Request-chat" id="Request-chat-1"><i class="fa-solid fa-message"></i>Chat</a>
+            </div>
+
+            <div class="connection-reqst">
+                <div class="connection-reqst-name">
+                    <p>Saranya</p>
+                </div>
+                <a class="Request-chat" id="Request-chat-2"><i class="fa-solid fa-message"></i>Chat</a>
+            </div>
+
+            <div class="connection-reqst" id="connection-reqst-3">
+                <div class="connection-reqst-name">
+                    <p>Jeni</p>
+                </div>
+                <a class="Request-chat" id="Request-chat-3"><i class="fa-solid fa-message"></i>Chat</a>
+            </div>
         </div>
     </div>
 
 
-    <div class="auth-pop" id="auth-pop">
+    <div class="auth-pop" id="auth-pop" >
         <a style="display: block; height: 0px;" onclick="closdeAthu()"><i id="baby-close"
                 class="fa-solid fa-xmark"></i></a>
-        <div class="modal-content" style="margin: 0px; ">
+        <div class="modal-content" style="margin: 0px;">
             <h3 style="margin: 0px;">Authentication</h3>
             <form action="" >
                 <div class="auth-pop-ele">
@@ -516,28 +522,13 @@
             </form>
         </div>
 
-        <div class="modal-content" id="modal-content-OTP" style="margin: 0px;">
+        <div class="modal-content" id="modal-content-OTP" style="margin: 0px; display: none;">
             <h3 style="margin: 0px;">Authentication</h3>
             <form action="" >
                 <div class="auth-pop-ele">
-                    <label for="name">Aadhar Number:</label>
-                    <input type="text" id="name" name="name" placeholder="Enter your Aadhar No" required>
+                    <label for="otp">OTP:</label>
+                    <input type="text" id="OTP" name="otp" placeholder="Enter OTP" required>
                 </div>
-                <div class="auth-pop-ele">
-                    <label for="number">Phone Number:</label>
-                    <input type="text" id="number" name="number" placeholder="Enter your phone No" required>
-                </div>
-                <div class="auth-pop-ele">
-                    <label for="fileUpload">Upload Your Aadhar:</label>
-                    <button style="width: 130px;">
-                        <label for="fileUpload">
-                            <i class="fa-regular fa-id-card"></i>Upload
-                        </label>
-                        <input type="file" id="fileUpload" name="fileUpload" accept=".jpg,.jpeg,.png,.pdf,.doc,.docx"
-                            required>
-                    </button>
-                </div>
-                <p style="font-size: small;color: red; font-weight: 700;">Enter the details as per your Aadharcard</p>
                 <div class="auth-pop-ele" style="text-align: center;">
                     <button style="margin-top: 10px;" onclick="closeupdate()">Submit</button>
                 </div>
