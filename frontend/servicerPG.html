@@ -208,10 +208,7 @@
 
         </div>
 
-        <!-- Chat Window -->
-        <!-- <div class="chat-window">
-            <iframe src="{% url 'chathome' %}" width="100%"></iframe>
-        </div> -->
+        
     </div>
 
 
@@ -325,6 +322,7 @@
     </div>
 
     <div class="connection-reqst-list" id="connection-reqst-list">
+        <div class="connection-reqst-list" id="connection-reqst-list" style="display: flex;"></div>
         <a onclick="closereqt()" class="connection-reqst-list-close"><i class="fa-solid fa-xmark"></i></a>
         <h3><i class="fa-solid fa-link"></i>Connection Request</h3>
         {% for post in posts %}
@@ -362,22 +360,7 @@
         </div>
         {% endif %}
         {% endfor %}
-        <!-- <div class="connection-reqst" >
-        <p>jeni</p>
-        <div class="reqst-button" id="reqst-button-2">
-            <button onclick="reqtaccpt('reqst-button-2','Request-chat-2')">Accept</button>
-            <button onclick="reqtReject('connection-reqst-2')">reject</button>
-        </div>
-        <a class="Request-chat" onclick="showChat()"  id="Request-chat-2"><i class="fa-solid fa-message"></i>Chat</a>
     </div>
-    <div class="connection-reqst" id="connection-reqst-3">
-        <p>Madhusha</p>
-        <div class="reqst-button" id="reqst-button-3">
-            <button onclick="reqtaccpt('reqst-button-3','Request-chat-3')">Accept</button>
-            <button onclick="reqtReject('connection-reqst-3')">reject</button>
-        </div>
-        <a class="Request-chat" onclick="showChat()" id="Request-chat-3"><i class="fa-solid fa-message"></i>Chat</a>
-    </div> -->
     </div>
 
 
@@ -467,26 +450,23 @@
             <a onclick="closeChat()" class="connection-reqst-list-close"><i class="fa-solid fa-xmark"></i></a>
             <h3><i class="fa-solid fa-user-group"></i></i>Connection list</h3>
 
-            <div class="connection-reqst" id="connection-reqst-1">
-                <div class="connection-reqst-name">
-                    <p>Bhavana</p>
+            {% for post in posts %}
+                {% if post.creater == user.id %}
+                {% if post.accepter != 0 %}
+                {% for users in userdetail %}
+                {% if users.id == post.accepter %}
+                <div class="connection-reqst" id="connection-reqst-1">
+                
+                    <div class="connection-reqst-name">
+                        <p>{{ user.name }}</p>
+                    </div>
+                    <a href="https://wa.me/{{user.number}}" class="Request-chat" id="Request-chat-3"><i class="fa-solid fa-message"></i>Chat</a>
                 </div>
-                <a class="Request-chat" id="Request-chat-1"><i class="fa-solid fa-message"></i>Chat</a>
-            </div>
-
-            <div class="connection-reqst">
-                <div class="connection-reqst-name">
-                    <p>Saranya</p>
-                </div>
-                <a class="Request-chat" id="Request-chat-2"><i class="fa-solid fa-message"></i>Chat</a>
-            </div>
-
-            <div class="connection-reqst" id="connection-reqst-3">
-                <div class="connection-reqst-name">
-                    <p>Jeni</p>
-                </div>
-                <a class="Request-chat" id="Request-chat-3"><i class="fa-solid fa-message"></i>Chat</a>
-            </div>
+                {% endif %}
+                {% endfor %}
+                {% endif %}
+                {% endif %}
+                {% endfor %}
         </div>
     </div>
 
