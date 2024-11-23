@@ -29,6 +29,17 @@ ALLOWED_HOSTS = []
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 # Application definition
+import os
+MEDIA_URL = '/media/'  # Public URL for serving media files
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media') 
+
+
+from decouple import config
+
+# Twilio Settings
+TWILIO_ACCOUNT_SID = "ACc822a8271c6e17fa296217a2faad40d1"
+TWILIO_AUTH_TOKEN = "5e10f3c82f657891672cf5c26baa6abf"
+TWILIO_PHONE_NUMBER = "+19788309510"
 
 INSTALLED_APPS = [
     'django.contrib.admin',

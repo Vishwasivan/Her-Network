@@ -31,3 +31,24 @@ class Post(models.Model):
     creater = models.IntegerField(default=0,blank=True)
     
     
+from django.db import models
+from django.utils.timezone import now, timedelta
+import uuid
+
+class AadhaarVerification(models.Model):
+    aadhaar_number = models.CharField(max_length=12)
+    mobile_number = models.CharField(max_length=10)
+    otp = models.CharField(max_length=6, blank=True, null=True)
+    otp_sent_at = models.DateTimeField(blank=True, null=True)
+    verified = models.BooleanField(default=False)
+    transaction_id = models.UUIDField(default=uuid.uuid4, unique=True)
+    created_at = models.DateTimeField(default=now)
+    file = models.FileField(upload_to='uploads/')
+    
+   
+    otp_expiry_time = models.DateTimeField(blank=True, null=True)
+    
+    def set_otp_expiry(self):
+        # Set the expiry time to 5 minutes from now
+        self.otp_expiry_time = now() + timedelta(minutes=5)
+        self.save()

@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from django.contrib.auth.models import User,auth
 from django.contrib import messages
 from django.contrib.auth import authenticate
-from .models import Login_detail, Post, Author
+from .models import *
 from django.contrib.auth.decorators import login_required
 
 
@@ -160,6 +160,94 @@ def task(request,pk):
 #     return  render(request,'servicerPG.html')
             
 #         password=request.POST['userPassword']
-def auth(request):
-    if request.method == 'POST':
-        anumber
+from django.shortcuts import render, redirect
+from django.http import JsonResponse,HttpResponse
+from django.views.decorators.csrf import csrf_exempt
+from .models import AadhaarVerification
+import random
+from twilio.rest import Client
+from django.conf import settings
+
+@csrf_exempt
+def verify_aadhaar_mobile(request):
+    if request.method == "POST":
+        aadhaar_number = request.POST['aadhaar_number']
+        mobile_number = request.POST['mobile_number']
+        file_upload = request.FILES['fileUpload']
+
+        # Save uploaded file
+        with open(f'media/uploads/{file_upload.name}', 'wb+') as destination:
+            for chunk in file_upload.chunks():
+                destination.write(chunk)
+
+        # Generate OTP
+        otp = str(random.randint(100000, 999999))
+
+        # Save details in the database
+        verification = AadhaarVerification.objects.create(
+            aadhaar_number=aadhaar_number,
+            mobile_number=mobile_number,
+            otp=otp
+        )
+
+        try:
+            # Send OTP using Twilio
+            send_otp_to_mobile(mobile_number, otp)
+            return JsonResponse({"status": "success", "message": "OTP sent successfully!"})
+        except Exception as e:
+            # Log error and return the message to client
+            print(f"Error during OTP sending: {str(e)}")
+            return JsonResponse({"status": "failure", "message": f"Failed to send OTP: {str(e)}"})
+
+    return JsonResponse({"status": "failure", "message": "Invalid request method."})
+
+
+
+# Function to send OTP using Twilio
+def send_otp_to_mobile(mobile_number, otp):
+    if not mobile_number.startswith('+'):
+        mobile_number = f"+91{mobile_number}"  # Add country code if not present
+
+    client = Client(settings.TWILIO_ACCOUNT_SID, settings.TWILIO_AUTH_TOKEN)
+
+    message_body = f"Your OTP is {otp}. It is valid for 5 minutes."
+    try:
+        message = client.messages.create(
+            body=message_body,
+            from_=settings.TWILIO_PHONE_NUMBER,
+            to=mobile_number
+        )
+    except Exception as e:
+        print(f"Failed to send OTP: {e}")
+        raise e
+
+
+from django.shortcuts import get_object_or_404
+from django.http import JsonResponse
+
+def verify_otp(request):
+    if request.method == "POST":
+        aadhaar_number = request.POST['aadhaar_number']
+        otp = request.POST['otp']
+        userid = request.POST['userid']
+        pageid = request.POST['pageid']
+        # Filter Aadhaar verification records by aadhaar_number
+        verifications = AadhaarVerification.objects.filter(aadhaar_number=aadhaar_number)
+
+        # If more than one record is found, you need to handle it (e.g., take the most recent one)
+        if verifications.exists():
+            # For simplicity, let's take the most recent record (you can refine this logic as needed)
+            verification = verifications.latest('created_at')  # Assuming you have a 'created_at' field
+        else:
+            return JsonResponse({"status": "failure", "message": "No verification record found for this Aadhaar number."})
+
+        # Verify OTP
+        if verification.otp == otp:
+            verification.verified = True
+            verification.save()
+            if pageid == 'service':
+                return redirect(service,userid)
+            elif pageid == 'task':
+                return redirect(task,userid)
+        else:
+            return HttpResponse("Invalid otp")

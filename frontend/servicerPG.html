@@ -471,19 +471,23 @@
     </div>
 
 
-    <div class="auth-pop" id="auth-pop" >
-        <a style="display: block; height: 0px;" onclick="closdeAthu()"><i id="baby-close"
-                class="fa-solid fa-xmark"></i></a>
+    <div class="auth-pop" id="auth-pop">
+        <a style="display: block; height: 0px;" onclick="closeAuth()">
+            <i id="baby-close" class="fa-solid fa-xmark"></i>
+        </a>
         <div class="modal-content" style="margin: 0px;">
             <h3 style="margin: 0px;">Authentication</h3>
-            <form action="" >
+        
+            <!-- Form for Aadhaar and Mobile Input -->
+            <form id="aadhaar-form" action="{% url 'verify_aadhaar_mobile' %}" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
                 <div class="auth-pop-ele">
-                    <label for="name">Aadhar Number:</label>
-                    <input type="text" id="name" name="name" placeholder="Enter your Aadhar No" required>
+                    <label for="aadhaar_number">Aadhar Number:</label>
+                    <input type="text" id="aadhaar_number" name="aadhaar_number" placeholder="Enter your Aadhar No" required>
                 </div>
                 <div class="auth-pop-ele">
-                    <label for="number">Phone Number:</label>
-                    <input type="text" id="number" name="number" placeholder="Enter your phone No" required>
+                    <label for="mobile_number">Phone Number:</label>
+                    <input type="text" id="mobile_number" name="mobile_number" placeholder="Enter your phone No" required>
                 </div>
                 <div class="auth-pop-ele">
                     <label for="fileUpload">Upload Your Aadhar:</label>
@@ -491,31 +495,72 @@
                         <label for="fileUpload">
                             <i class="fa-regular fa-id-card"></i>Upload
                         </label>
-                        <input type="file" id="fileUpload" name="fileUpload" accept=".jpg,.jpeg,.png,.pdf,.doc,.docx"
-                            required>
+                        <input type="file" id="fileUpload" name="fileUpload" accept=".jpg,.jpeg,.png,.pdf,.doc,.docx" required>
                     </button>
                 </div>
-                <p style="font-size: small;color: red; font-weight: 700;">Enter the details as per your Aadharcard</p>
+                <p style="font-size: small; color: red; font-weight: 700;">Enter the details as per your Aadharcard</p>
                 <div class="auth-pop-ele" style="text-align: center;">
-                    <button style="margin-top: 10px;" onclick="closeupdate()">Submit</button>
+                    <button type="submit" style="margin-top: 10px;" id="submit-aadhaar-form">Submit</button>
                 </div>
             </form>
-        </div>
+        
+            <!-- Form for OTP Verification (Initially hidden) -->
+            <div class="modal-content" id="modal-content-OTP" style="margin: 0px; display: none;">
+                <h3 style="margin: 0px;">OTP Authentication</h3>
+                <form id="otp-form" action="{% url 'verify_otp' %}" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" id="aadhaar_number_otp" name="aadhaar_number">
+                    <div class="auth-pop-ele">
+                        <label for="otp">OTP:</label>
+                        <input type="text" id="OTP" name="otp" placeholder="Enter OTP" required>
+                        <input type="hidden" name="userid" value="{{user.id}}">
+                        <input type="hidden" name="pageid" value="service">
 
-        <div class="modal-content" id="modal-content-OTP" style="margin: 0px; display: none;">
-            <h3 style="margin: 0px;">Authentication</h3>
-            <form action="" >
-                <div class="auth-pop-ele">
-                    <label for="otp">OTP:</label>
-                    <input type="text" id="OTP" name="otp" placeholder="Enter OTP" required>
-                </div>
-                <div class="auth-pop-ele" style="text-align: center;">
-                    <button style="margin-top: 10px;" onclick="closeupdate()">Submit</button>
-                </div>
-            </form>
+                    </div>
+                    <div class="auth-pop-ele" style="text-align: center;">
+                        <button type="submit" style="margin-top: 10px;">Submit</button>
+                    </div>
+                </form>
+            </div>
         </div>
+        
+        <script>
+            document.getElementById("aadhaar-form").addEventListener("submit", function(event){
+                event.preventDefault();  // Prevent the form from submitting normally
+                var form = event.target;
+        
+                var aadhaar_number = document.getElementById("aadhaar_number").value;
+                var mobile_number = document.getElementById("mobile_number").value;
+                var fileUpload = document.getElementById("fileUpload").files[0];
+        
+                var formData = new FormData();
+                formData.append('aadhaar_number', aadhaar_number);
+                formData.append('mobile_number', mobile_number);
+                formData.append('fileUpload', fileUpload);
+        
+                fetch("{% url 'verify_aadhaar_mobile' %}", {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === "success") {
+                        // Hide the Aadhaar form and show the OTP form
+                        document.getElementById("aadhaar-form").style.display = "none";
+                        document.getElementById("modal-content-OTP").style.display = "block";
+                        // Store the aadhaar number to send with OTP verification
+                        document.getElementById("aadhaar_number_otp").value = aadhaar_number;
+                    } else {
+                        alert(data.message);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('An error occurred while submitting the form.');
+                });
+            });
+        </script>
     </div>
-
 
     <!-- script -->
     <script src="{% static 'script.js' %}"></script>
