@@ -34,7 +34,7 @@ MEDIA_URL = '/media/'  # Public URL for serving media files
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media') 
 
 
-from decouple import config
+
 
 # Twilio Settings
 TWILIO_ACCOUNT_SID = "ACc822a8271c6e17fa296217a2faad40d1"

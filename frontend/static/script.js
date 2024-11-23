@@ -263,7 +263,13 @@ function showAthu() {
     const athuPop  = document.getElementById("auth-pop")
     athuPop.style.display = "block";
 }
-function closdeAthu() {
+function closeAthu() {
+    const athuPop  = document.getElementById("auth-pop")
+    athuPop.style.display = "none";
+}
+function openOPTPop() {
+    const athuOTPPop  = document.getElementById("auth-OTP")
+    athuOTPPop.style.display = "flex";
     const athuPop  = document.getElementById("auth-pop")
     athuPop.style.display = "none";
 }
