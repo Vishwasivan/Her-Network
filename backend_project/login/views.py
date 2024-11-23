@@ -54,7 +54,7 @@ def login(request):
                 return redirect(task,login.id)
             
         else:
-            messages.info(request,"cannot login") 
+            messages.info(request,"login and password are incorrect") 
     return render(request,'login.html')
 
 
@@ -160,3 +160,6 @@ def task(request,pk):
 #     return  render(request,'servicerPG.html')
             
 #         password=request.POST['userPassword']
+def auth(request):
+    if request.method == 'POST':
+        anumber
