@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Her Network</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'Assets/logo.png' %}">
+
+    <!-- google-fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+        rel="stylesheet">
+
+    <!-- fontawesome -->
+    <script src="https://kit.fontawesome.com/a7e1cdcb19.js" crossorigin="anonymous"></script>
+
+
+   
+
+    <!-- script -->
+    <script src="{% static 'script.js' %}"></script>
+
+
+</head>
+
+<body>
+    <!-- header -->
+    <!-- nav-bar -->
+    <div class="nav-main">
+        <div class="nav-logo">
+            <img src="{% static 'Assets/logo.png' %}" alt="">
+            <h3>Her Network</h3>
+        </div>
+        <div class="index-mobi-nav"  >
+            <a  href="/login">
+                <button>User Login/<br>Register button</button>
+             </a>
+            <i class="fa-solid fa-bars" id="ser-nav-icon" onclick="openIndexMobiNav() " aria-hidden="true"></i> 
+        </div>
+        <div class="nav-links">
+            <a href="">Home</a>
+           <a href="">About</a>
+            <a href="">Services</a>
+           <a href="">Contact</a>
+            <a href="/login"><button >
+                    User Login/<br>Register button
+                </button></a>
+        </div>
+    </div>
+
+
+    <!-- 	Main Section -->
+
+    <div class="welcome-meg">
+
+        <div class="meg-con">
+            <h1 style="color: indigo;">Welcome to Her Network</h1>
+            <p>
+                Empowering connections between <strong>housewives</strong> and <strong>working women</strong> to build a
+                supportive community.
+            </p>
+            <p>
+                Whether you're looking to manage household tasks, provide childcare, or share your skills with others,
+                this platform is designed to create meaningful opportunities.
+            </p>
+            <p>
+                <strong>Together, we grow stronger!</strong> Let's make a difference by helping each other thrive in
+                both personal and professional lives.
+            </p>
+            <p>
+                <em>Join the network, share your skills, and connect with women like you.</em>
+            </p>
+            <div class="Welcome-img" id="index-img-fake">
+                <img src="static/Assets/BNG/home2-removebg-preview.png" alt="">
+            </div>
+            <div class="index-btn" >
+                <button style="margin: 0px 20px 0px 0px;"><a href="/login" style="text-decoration: none; color: aliceblue;">
+                        Empower & Earn with Your Skills
+                    </a></button>
+                <button><a href="/login" style="text-decoration: none; color: aliceblue; ">
+                        Get Help, Stay Productive
+                    </a></button>
+            </div>
+
+        </div>
+        <div class="Welcome-img" id="index-img-og">
+            <img src="static/Assets/BNG/home2-removebg-preview.png" alt="">
+        </div>
+
+    </div>
+    <div class="index-mobi-nav-bar" id="index-mobi-nav-bar">
+        <a id="ser-mob-nav-close" style="display: block; text-align: end; margin-right: 20px;" onclick="closeIndexMobiNav()"><i class="fa-solid fa-xmark" ></i></a>
+        <div class="index-mobi-nav-link">
+            <a href=""><i class="fa-solid fa-house"></i>Home</a>
+            <a href=""><i class="fa-solid fa-comment"></i>About</a>
+            <a href=""><i class="fa-solid fa-bell-concierge"></i>Services</a>
+           <a href=""><i class="fa-solid fa-link"></i>Contact</a>
+        </div>
+    </div>
+
+    <!-- style-sheet -->
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</body>
+
+</html>

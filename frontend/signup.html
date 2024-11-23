@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Her Network</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'Assets/logo.png' %}">
+
+    <!-- google-fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+        rel="stylesheet">
+
+ <!-- fontawesome -->
+ <script src="https://kit.fontawesome.com/a7e1cdcb19.js" crossorigin="anonymous"></script>
+
+    <!-- style-sheet -->
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+
+    <!-- script -->
+    <script src="{% static 'script.js' %}"></script>
+
+
+</head>
+
+<body>
+
+    <div class="main-container">
+
+        <div class="UR-login">
+
+            <!-- User Registration -->
+            <div class="con-UR" id="regi" >
+
+                <h1 style="margin: 0px;">User Registration</h1>
+
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <table>
+                        <tr>
+                            <td>
+                                <label for="Uname">Name</label>
+                            </td>
+                            <td>
+                                <input type="text" id="Uname" name="Uname" value="" required>
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <br>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <label for="Uphone">Phone number</label>
+                            </td>
+                            <td>
+                                <input type="tel" id="Uphone" name="Uphone" value="" required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <br>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="Uemail">email</label>
+                            </td>
+                            <td>
+                                <input type="email" id="Uemail" name="Uemail" value="" required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <br>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <label for="role">Select Your Role</label>
+                            </td>
+                            <td>
+                                <select id="role" name="role" onchange="showSkillsInput()" required>
+                                    <option value="" disabled selected>Choose...</option>
+                                    <option value="Housewife">Housewife</option>
+                                    <option value="Working Woman">Working Woman</option>
+                                    <option value="Student">Student</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <br>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <label for="Upsw">Password</label>
+                            </td>
+                            <td>
+                                <input type="password" id="Upsw" name="Upsw" value="" required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <br>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <label for="UCpsw">Confirm Password</label><br>
+                            </td>
+                            <td>
+                                <input type="Password" id="UCpsw" name="UCpsw" value="" required><br>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                {% for m in messages %}
+                                    <h6>{{m}}</h6>
+                                {% endfor %}
+                            </td>
+                            
+                        </tr>
+                    </table>
+                    <div class="skill-pop" id="skillsContainer" style="display: none;">
+
+                        <tr>
+                        <tr>
+                            <td>
+                                <h3>Select Your Skills:</h3>
+                            </td>
+                
+                        </tr>
+                        <td>
+                            <table>
+                                <tr>
+                                    <td class="skill-checkbox">
+                                        <input type="checkbox" id="cooking" name="skills" value="Cooking">
+                                        <label for="cooking">Cooking</label>
+                                    </td>
+                
+                                    <td class="skill-checkbox">
+                                        <input type="checkbox" id="childcare" name="skills" value="Childcare">
+                                        <label for="childcare">Childcare</label>
+                                    </td>
+                                </tr>
+                
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" id="cleaning" name="skills" value="Cleaning">
+                                        <label for="cleaning">Cleaning</label>
+                                    </td>
+                
+                                    <td>
+                                        <input type="checkbox" id="teaching" name="skills" value="Teaching">
+                                        <label for="teaching">Teaching</label>
+                                    </td>
+                                </tr>
+                
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" id="baking" name="skills" value="Baking">
+                                        <label for="baking">Baking</label>
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" id="project-management" name="skills" value="Project Management">
+                                        <label for="project-management">Project Management</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td >
+                                        <input type="checkbox" id="companion" name="skills" value="companion">
+                                        <label for="companion">Companion</label>
+                                    </td>
+                                    
+                                </tr>
+                            </table>
+                        </td>
+                        </tr>
+                        <br>
+                            
+                        <div style="text-align: center;">
+                            <label for="project-management">Other Skills</label>
+                            <input type="text" id="project-management" name="skills" value="" style=" height: 25px; margin-bottom: 20px;"><br>
+                            <button onclick="closeSkil()">Done</button>
+                        </div>
+                    </div>
+                    <div style="text-align:center; margin-top:20px;">
+                        <button type="submit"><b>Submit</b></button>
+                    </div>
+
+                </form>
+                
+            </div>
+            <!-- wellcome Page -->
+            <div id="well-pg" style="text-align: center; display: none;">
+                <h2>Welcome Back....</h2>
+                <a href="/login" style="text-decoration: none;color: white;">
+                <button ><b>Login</b></button></a>
+            </div>
+        </div>
+        <div class="UR-login-img">
+            <img src="{% static 'Assets/BNG/Peachy_20241017_002638123.jpg' %}" alt="">
+        </div>
+    </div>
+
+
+    
+     <!-- script -->
+     <script src="{% static 'script.js'%}"></script>
+</body>
+
+</html>

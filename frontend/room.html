@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Her Network</title>
+    <link rel="icon" type="image/x-icon" href="static/Assets/logo.png">
+
+    <!-- google-fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+        rel="stylesheet">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+    <!-- fontawesome -->
+    <script src="https://kit.fontawesome.com/a7e1cdcb19.js" crossorigin="anonymous"></script>
+
+    <!-- style-sheet -->
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+
+    <!-- script -->
+    <script src="static/script.js"></script>
+    <style>
+        @media only screen and (min-width: 550px) {
+        .chat{
+            width: 45%;
+            min-width: 350px;
+        }
+        .sidebar{
+            width: 100%;
+        }
+        .chat-window{
+            width: 100%;
+        }
+    }
+    </style>
+ 
+</head>
+<body>
+    <div class="chat" id="chat" style="display: flex;" >
+        <!-- Sidebar (Chat List) -->
+        
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <a id="back-previous-pg" href="#" style="text-decoration: none; color: white;">
+                <i class="fa-solid fa-arrow-left" style="margin-right: 10px;"></i>
+            </a>
+                Chats
+            </div>
+            <div class="chat-list">
+                <div class="chat-item" onclick="openChat()">
+                    <div class="chat-avatar"></div>
+                    <div class="chat-info">
+                        <div class="chat-name">Alice</div>
+                        <div class="chat-last-message">Hi, how are you?</div>
+                    </div>
+                </div>
+                <div class="chat-item" onclick="openChat()">
+                    <div class="chat-avatar"></div>
+                    <div class="chat-info">
+                        <div class="chat-name">Bob</div>
+                        <div class="chat-last-message">Let’s meet tomorrow!</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Chat Window -->
+        <div class="chat-window" id="chat-window" style="display: none;">
+            <div class="chat-header" id="chatHeader">
+                <i class="fa-solid fa-arrow-left" style="margin-right: 10px;" onclick="BackChatList()"></i>
+                Chat with [User Name]
+            </div>
+            <div class="message-area" id="messageArea">
+                <div class="message sent">
+                    <p>Hello!</p>
+                    <span class="timestamp">10:30 AM</span>
+                </div>
+                <div class="message received">
+                    <p>Hi! How are you?</p>
+                    <span class="timestamp">10:31 AM</span>
+                </div>
+            </div>
+            <div class="input-area">
+                <input type="text" id="messageInput" placeholder="Type a message..." />
+                <button class="send-button" onclick="sendMessage()">Send</button>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="{% static 'script.js' %}"></script>
+</html>

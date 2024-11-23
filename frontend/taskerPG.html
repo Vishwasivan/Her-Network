@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Her Network</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'Assets/logo.png' %}">
+
+    <!-- google-fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+        rel="stylesheet">
+    <!-- fontawesome -->
+    <script src="https://kit.fontawesome.com/a7e1cdcb19.js" crossorigin="anonymous"></script>
+
+
+    <!-- style-sheet -->
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+
+</head>
+<body>
+    <div class="tasker-main">
+        <div class="tasker-slid-bar">
+            <div class="tasker-log-tittle">
+                <img src="{% static 'Assets/logo.png' %}" alt="">
+                <h3>Her Network</h3>
+            </div>
+            <div class="tasker-side-nav">
+                <a><i class="fa-solid fa-baby-carriage"></i>Baby status</a>
+                <!-- <a><i class="fa-regular fa-bell"></i>Notification</a> -->
+                <a onclick="openConnection()"><i class="fa-solid fa-link"></i>Connection Status</a>
+                <a onclick="showChat()" id="massage"><i class="fa-solid fa-message"></i>Messages</a>
+            </div>
+            <div class="tasker-profile-settings">
+                <h3 onclick="openProSetting()"><i class="fa-solid fa-gear"></i>profile Settings</h3>
+            </div>
+        </div>
+    
+        <div class="tasker-main-container">
+            <div class="tasker-nav">
+                <div class="nav-search">
+                    <input type="search" placeholder="Search Service,Location...."><i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+                <div class="nav-other">
+                    <a onclick="opentaskeInfo()"><i class="fa-solid fa-user"></i></a>
+                    <a id="logout-icon" href="index.html"><i class="fa-solid fa-right-from-bracket"></i>Logout</a>
+                    <a onclick="openNoti()"><i class="fa-regular fa-bell"></i><span id="task-mobi-noti">Notification</span></a>
+                    <i class="fa-solid fa-bars" id="ser-nav-icon" onclick="openMobiNav()"></i>
+                </div>
+            </div>
+            <div class="tasker-shortcut">
+                <div class="short-box">
+                    <button>
+                        <p><i class="fa-solid fa-utensils"></i>Coooking</p>
+                    </button>
+                </div>
+                <div class="short-box">
+                    <button>
+                        <p><i class="fa-solid fa-book-open-reader"></i>Teaching</p>
+                    </button>
+                   
+                </div>
+                <div class="short-box">
+                    <button>
+                        <p><i class="fa-solid fa-baby-carriage"></i>Baby Care</p>
+                    </button>
+                    
+                </div>
+                <div class="short-box">
+                    <button><p><i class="fa-solid fa-broom"></i>Cleaning</p></button>
+                    
+                </div>
+                <div class="short-box">
+                    <button>
+                        <p>Others...</p>
+                    </button>
+                    
+                </div>
+            </div>
+            <div class="tasker-feeds">
+                
+                {% for post in posts %}
+                    {% if post.accepter == 0 %}
+                        <div class="post-box" id="tasker-feeds">
+                            <img src="{% static 'Assets/cooking.jpg' %}" alt="">
+                            <p>{{ post.titles }}</p>
+                            <h4><i class="fa-solid fa-location-dot"></i>{{ post.location }}</h4>
+                            <h3><i class="fa-solid fa-indian-rupee-sign"></i>{{ post.price }}</h3>
+                            <form action="" method="post">
+                            {% csrf_token %}
+                                <input type="hidden" name="createrid" id="createrid" value="{{ post.creater}}">
+                                <button type="submit" name="req" value="{{ post.id }}" data-id="{{ post.id }}" id="{{ post.id }}" class="requestb" onclick="requestbutton(this)">
+                                    send request
+                                {% for auth in authors %}
+                                    {% if auth.requests == user.id %}
+                                        <script>
+                                            document.querySelector('.requestb').innerHTML='request sended'
+                                        </script>
+                                    {% endif %}
+                                {% endfor %}
+                            </button>
+                            </form>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+                
+                <!-- <div class="post-box" id="tasker-feeds">
+                    <img src="{% static 'Assets/teaching.jpg' %}" alt="">
+                    <p>Lorem ipsum dolor sit amet</p>
+                    <h4><i class="fa-solid fa-location-dot"></i>Vellacheri</h4>
+                    <h3><i class="fa-solid fa-indian-rupee-sign"></i>5000</h3>
+                    <button><i class="fa-solid fa-link"></i>Grow Together</button>
+                </div> -->
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+    <div class="chat" id="chat" style="display: none;">
+
+        <!-- Sidebar (Chat List) -->
+        <div class="sidebar">
+
+            <div class="sidebar-header">
+                <i id="close" onclick="closeChat()" class="fa-solid fa-xmark"></i>
+                Chats
+            </div>
+            <div class="chat-list">
+                <div class="chat-item" onclick="openChat('Alice')">
+                    <div class="chat-avatar"></div>
+                    <div class="chat-info">
+                        <div class="chat-name">Alice</div>
+                        <div class="chat-last-message">Hi, how are you?</div>
+                    </div>
+                </div>
+                <div class="chat-item" onclick="openChat('Bob')">
+                    <div class="chat-avatar"></div>
+                    <div class="chat-info">
+                        <div class="chat-name">Bob</div>
+                        <div class="chat-last-message">Let’s meet tomorrow!</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Chat Window -->
+        <div class="chat-window">
+            <div class="chat-header" id="chatHeader">Chat through Her-Network</div>
+            <!-- <div class="message-area" id="messageArea">
+                <div class="message sent">
+                    <p>Hello!</p>
+                    <span class="timestamp">10:30 AM</span>
+                </div>
+                <div class="message received">
+                    <p>Hi! How are you?</p>
+                    <span class="timestamp">10:31 AM</span>
+                </div>
+            </div>
+            <div class="input-area">
+                <input type="text" id="messageInput" placeholder="Type a message..." />
+                <button class="send-button" onclick="sendMessage()">Send</button>
+            </div> -->
+            <iframe src="{% url 'chathome' %}" width="300px" height="500px"></iframe>
+        </div>
+    </div>
+
+
+    <div class="pro-setting" id="pro-setting">
+        <div class="settings-container">
+            <div class="settings-header">
+                <h2>Profile Settings</h2>
+                <!-- <button onclick="closeSettings()">&times;</button> -->
+                <i id="close" style="top:-44px; left:12%;" onclick="closeSettings()" class="fa-solid fa-xmark"></i>
+            </div>
+    
+            <form method="post" onsubmit="saveSettings(event)">
+                {% csrf_token %}
+                <div class="profile-pic">
+                    <img src="{% static 'Assets/User-Profile-pic.jpg' %}" id="profilePicPreview" alt="Profile Picture">
+                    <!-- <input type="file" id="profilePic" accept="image/*" onchange="previewProfilePic(event)"> -->
+                    <label for="file-upload" class="custom-file-upload">
+                        Change Profile Picture
+                    </label>
+                    <input id="file-upload" type="file">
+                </div>
+    
+                <label for="userName">change Name:</label>
+                <input type="text" name="userName" id="userName" placeholder="{{ user.name }}">
+                <label for="userEmail">email:</label>
+                <input type="email" name="userEmail" id="userEmail" placeholder="{{ user.email}}" disabled>
+                <label for="userPassword">change Password:</label>
+                <input type="password" name="userPassword" id="userPassword" placeholder="New password">
+    
+                <label for="userLocation">Location</label>
+                <select name="userLocation" id="userLocation">
+                    <option value="">Select Location</option>
+                    <option value="Adyar">Adyar</option>
+                    <option value="Anna Nagar">Anna Nagar</option>
+                    <option value="T. Nagar">T. Nagar</option>
+                    <option value="Velachery">Velachery</option>
+                    <option value="Kodambakkam">Kodambakkam</option>
+                    <option value="Besant Nagar">Besant Nagar</option>
+                </select>
+    
+                <button type="submit" class="save-button">Save Changes</button>>
+            </form>
+        </div>
+    </div>
+    
+    <div class="connection-status-list" id="connection-status-list">
+        <h3><i class="fa-solid fa-link"></i>Connection Request Status</h3>
+        <a id="connection-status-list-close" onclick="closeConnection()"><i class="fa-solid fa-xmark"></i></a>
+        {% for post in posts %}
+            {% for auth in authors %}
+                {% if auth.requests == user.id %}
+                    {% if auth.status == 'request sended' %}
+                        <div class="connection-status CSL-Wait" >
+                            {% for users in userdetail %}
+                                {% if users.id == post.creater %}
+                                    <p>Your Connection Request to {{ users.name }} is watting for Responce</p>
+                                {% endif %}
+                            {% endfor %}
+                            <a onclick="" id="massage"><i class="fa-solid fa-message"></i>Chat</a>
+                        </div>
+                    {% elif auth.status == 'accepted' %}
+                        <div class="connection-status CSL-Accpt" >
+                            {% for users in userdetail %}
+                                {% if users.id == post.creater %}
+                                <p>Your Connection request to {{ users.name }} Has Accpted </p>
+                                {% endif %}
+                            {% endfor %}
+                            
+                            <a onclick="showChat()" id="massage"><i class="fa-solid fa-message"></i>Chat</a>
+                        </div>
+                    {% elif auth.status == 'rejected' %}
+                        <div class="connection-status CSL-Dcl" >
+                            {% for users in userdetail %}
+                                {% if users.id == post.creater %}
+                                <p>Your Connection request to {{ users.name }} has Declined </p>
+                                {% endif %}
+                            {% endfor %}
+                           
+                            <a onclick="" id="massage"><i class="fa-solid fa-ban"></i></a>
+                        </div>
+                    {% else %}
+                        <div class="connection-status CSL-Dcl" >
+                            <p>No request Pending</p>
+                        </div>
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+        {% endfor %}
+        <!-- <div class="connection-status CSL-Wait" >
+            <p>Your Connection Request To Madhusha Is Watting For Responce</p>
+            <a onclick="" id="massage"><i class="fa-solid fa-message"></i>Chat</a>
+        </div>
+        <div class="connection-status CSL-Accpt" >
+            <p>Your Connection Request To Pardhana Has Accpted </p>
+            <a onclick="showChat()" id="massage"><i class="fa-solid fa-message"></i>Chat</a>
+        </div> -->
+    </div>
+
+
+    <div class="tasker-noti" id="tasker-noti">
+        
+        <div class="notivication">
+            <a onclick="closeNoti()"><i class="fa-solid fa-xmark"></i></a>
+            <h2 style="margin: 0px;">Notifications</h2>
+            <div class="mgs">
+                <p>You have a new message from Sarah (10:30 AM).
+                    <button onclick="dismissNotification(this)">Dismiss</button></p>
+                <p>Emma accepted your babysitting task (Yesterday, 4:45 PM).
+                    <button onclick="dismissNotification(this)">Dismiss</button></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="tasker-pro-info" id="tasker-pro-info">
+        <img src="{% static 'Assets/Usser profile pic2.jpg' %}" alt="">
+        <a onclick="closeProInfo()"><i class="fa-solid fa-xmark"></i></a>
+        <h4 style="margin: 5px;">{{ user.name }}</h4>
+        <p>{{ user.email }}</p>
+        <p>+91 {{ user.number }}</p>
+    </div>
+
+
+
+    <div class="task-nav-mob-bar">
+        <div class="ser-nav-mob-bar" id="ser-nav-mob-bar">
+            <a id="ser-mob-nav-close"><i class="fa-solid fa-xmark" onclick="closeMobiNav()"></i></a>
+            <div class="slid-list">
+                <a onclick="closeMobiNav()" href="messager.html" id="massage"><i class="fa-solid fa-message"></i>Messages</a>
+                <a onclick=""><i class="fa-solid fa-baby-carriage"></i>Baby Status</a>
+                <a onclick="openConnection()"><i class="fa-solid fa-link" aria-hidden="true"></i>Connection Status</a>
+                <div class="prof-settings">
+                    <a onclick="openProSetting()" style="text-decoration: none; color:#ac74fc;" >
+                        <i style="margin-right: 15px;" class="fa-solid fa-gear"></i>Profile Settings
+                    </a>
+                    <button onclick="document.location='index.html'" id="tasker-Logout-btn">
+                        <h4 style="margin: 0px;"><i class="fa-solid fa-right-from-bracket"></i>LOGOUT</h4>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+<div style="
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  background-color: white;
+">
+    <iframe src="{% url 'chathome' %}" width="300px" height="500px"></iframe>
+
+</div>
+    
+
+    <!-- script -->
+    <script src="{% static 'script.js' %}"></script>
+</body>
+</html>

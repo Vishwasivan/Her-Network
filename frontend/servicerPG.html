@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Her Network</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'Assets/logo.png' %}">
+
+    <!-- google-fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+        rel="stylesheet">
+    <!-- fontawesome -->
+    <script src="https://kit.fontawesome.com/a7e1cdcb19.js" crossorigin="anonymous"></script>
+
+
+    <!-- style-sheet -->
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+
+    
+</head>
+
+<body>
+
+    <div class="dash-main" >
+        <div class="slid-bar">
+            <div class="sild-logo">
+                <img src="{% static 'Assets/logo.png' %}" alt="">
+                <h3>Her Network</h3>
+            </div>
+            <div class="slid-list">
+                <!-- <a href=""><i class="fa-solid fa-list-check"></i>Post Task </a> -->
+                 <a onclick="showuDash()"><i class="fa-solid fa-chart-line"></i>Dashboard</a>
+                <a onclick="openreqt()"><i class="fa-solid fa-link"></i>Connection Request</a>
+                <a onclick="showChat()" id="massage"><i class="fa-solid fa-message"></i>Messages</a>
+                <a href=""><i class="fa-regular fa-comment"></i>Feedback</a>
+                <a onclick="showuBabyUpdate()"><i class="fa-solid fa-baby-carriage"></i>Baby Status Update</a>
+            </div>
+            <div class="prof-settings">
+                <a onclick="openProSetting()" style="text-decoration: none; color:#ac74fc;" >
+                    <i style="margin-right: 15px;" class="fa-solid fa-gear"></i>Profile Settings
+                </a>
+            </div>
+        </div>
+        <div class="babysatatus" id="babysatatus">
+            <div class="active-tittle">
+                <h2 style="margin: 20px 0px 0px 0px;">Babysitting Status Update</h2>
+            </div>
+            <div class="status-con">
+                <div class="status-con-sub">
+                    <div class="status-update-box">
+                        <p>Morning 09 to 10 baby status Update</p>
+                        <button onclick="openupdate()">UPDATE</button>
+                    </div>
+                    <div class="status-update-box">
+                        <p>Morning 10AM to 11AM baby status Update</p>
+                        <button onclick="openupdate()">UPDATE</button>
+                    </div>
+                    <div class="status-update-box">
+                        <p>Morning 11AM to 12AM baby status Update</p>
+                        <button onclick="openupdate()">UPDATE</button>
+                    </div>
+                    <div class="status-update-box">
+                        <p>Afternoon 12AM to 01PM baby status Update</p>
+                        <button onclick="openupdate()">UPDATE</button>
+                    </div>
+                    <div class="status-update-box">
+                        <p>Afternoon 01PM to 02PM baby status Update</p>
+                        <button onclick="openupdate()">UPDATE</button>
+                    </div>
+                </div>
+                <div class="status-con-sub">
+                    <div class="status-update-box">
+                        <p>Afternoon 02PM to 03PM baby status Update</p>
+                        <button onclick="openupdate()">UPDATE</button>
+                    </div>
+                    <div class="status-update-box">
+                        <p>Afternoon 04PM to 05PM baby status Update</p>
+                        <button onclick="openupdate()">UPDATE</button>
+                    </div>
+                    <div class="status-update-box">
+                        <p>Evening 05PM to 06PM baby status Update</p>
+                        <button onclick="openupdate()">UPDATE</button>
+                    </div>
+                    <div class="status-update-box">
+                        <p>Evening 06PM to 07PM baby status Update</p>
+                        <button onclick="openupdate()">UPDATE</button>
+                    </div>
+                    <div class="status-update-box">
+                        <p>Evening 07PM to 08PM baby status Update</p>
+                        <button onclick="openupdate()">UPDATE</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="activity-con" id="activity-con" >
+
+            <div class="active-tittle">
+                <h2 style="margin: 20px 0px 0px 0px;">Dashboard</h2>
+                <i class="fa-solid fa-bars" id="ser-nav-icon" onclick="openMobiNav()"></i>
+            </div>
+
+            <div class="dash-img">
+                <img src="{% static 'Assets/BNG/female-student-presenting-report-graph-class-cartoon-person-presents-report-school_24797-1558-removebg-preview.png' %}"
+                    alt="">
+                <img src="{% static 'Assets/BNG/2.png' %}" alt="">
+            </div>
+
+
+            <div class="active-task">
+                <h2 style="margin: 0px;">Active Tasks</h2>
+                <div class="tasks">
+                    <div class="task">
+                        <div class="prograss-taskname">
+                            <p>babysitting</p>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 60%;"></div>
+                            </div>
+                        </div>
+                        <div class="task-btn">
+                            <button onclick="markCompleted(this)">Mark as Completed</button>
+                        </div>
+                    </div>
+                    <div class="task">
+                        <div class="prograss-taskname">
+                            <p>Cook Meals for Event</p>
+                        </div>
+                        <div class="task-btn">
+                            <button onclick="markCompleted(this)" disabled>Completed</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="active-footer">
+                <div class="quvic-links">
+                    <h2 style="margin: 0px;">Quick Links</h2>
+                    <button onclick="openServiceModal()">Post New Service</button>
+                    <!-- <button onclick="listService()">List a Service</button> -->
+                </div>
+
+                <div class="notivication">
+                    <h2 style="margin: 0px;">Notifications</h2>
+                    <div class="mgs">
+                        <p>You have a new message from Sarah (10:30 AM).
+                            <button onclick="dismissNotification(this)">Dismiss</button></p>
+                        <p>Emma accepted your babysitting task (Yesterday, 4:45 PM).
+                            <button onclick="dismissNotification(this)">Dismiss</button></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="User-prof">
+            <div class="User-prof-titl">
+                <h2>My Profile</h2>
+            </div>
+            <div class="prof-info">
+
+                <div>
+                    <img src="{% static 'Assets/Usser profile pic2.jpg' %}" alt="">
+                    <h1 style="margin: 0px;">{{ user.name }}</h1>
+                    <p><i class="fa-solid fa-envelope"></i>{{ user.email }}</p>
+                </div>
+                <button onclick="document.location='index.html'">
+                    <h4 style="margin: 0px;"><i class="fa-solid fa-right-from-bracket"></i>LOGOUT</h4>
+                </button>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="chat" id="chat" style="display: none;">
+
+        <!-- Sidebar (Chat List) -->
+        <div class="sidebar">
+
+            <div class="sidebar-header">
+                <i id="close" onclick="closeChat()" class="fa-solid fa-xmark"></i>
+                Chats
+            </div>
+            <div class="chat-list">
+                <div class="chat-item" onclick="openChat('Alice')">
+                    <div class="chat-avatar"></div>
+                    <div class="chat-info">
+                        <div class="chat-name">Alice</div>
+                        <div class="chat-last-message">Hi, how are you?</div>
+                    </div>
+                </div>
+                <div class="chat-item" onclick="openChat('Bob')">
+                    <div class="chat-avatar"></div>
+                    <div class="chat-info">
+                        <div class="chat-name">Bob</div>
+                        <div class="chat-last-message">Let’s meet tomorrow!</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Chat Window -->
+        <div class="chat-window">
+            <iframe src="{% url 'chathome' %}" width="100%"></iframe>
+        </div>
+    </div>
+
+
+
+    <div class="modal" style="display: none;" id="serviceModal">
+        <div class="modal-content">
+            
+            <div class="modal-header">
+                <h2>Offer a Service</h2>
+                <i id="close" style="top:-44px; left:12%;" onclick="closeServiceModal()" class="fa-solid fa-xmark"></i>
+                <!-- <button class="close-button" onclick="closeServiceModal()">&times;</button> -->
+            </div>
+            <form method="post" action="">
+                {% csrf_token %}
+                <label for="serviceTitle">Service Title</label>
+                <input type="text" id="serviceTitle" name="serviceTitle" placeholder="Enter Service Title" required>
+
+                <label for="serviceDescription">Description</label>
+                <input type="text" id="serviceDescription" name="serviceDescription" placeholder="Describe your service" required>
+
+                <!-- <label for="serviceImage">Upload Image</label>
+                <input type="file" id="serviceImage" accept="image/*" required> -->
+
+                <label for="skills">Skills (comma-separated)</label>
+                <input type="text" id="skills" name="skills" placeholder="e.g., Cooking, Babysitting, Cleaning" required>
+
+                <label for="availability">Availability</label>
+                <input type="datetime-local" id="availability" name="availability" placeholder="e.g., Mon-Fri, 10 AM - 5 PM" required>
+
+                <label for="servicePrice">Price (INR)</label>
+                <input type="number" id="servicePrice" name="servicePrice" placeholder="Enter Price" required>
+
+                <label for="serviceLocation">Location</label>
+                <select id="serviceLocation" name="serviceLocation" required>
+                    <option value="">Select Location</option>
+                    <option value="Adyar">Adyar</option>
+                    <option value="Anna Nagar">Anna Nagar</option>
+                    <option value="T. Nagar">T. Nagar</option>
+                    <option value="Velachery">Velachery</option>
+                    <option value="Kodambakkam">Kodambakkam</option>
+                    <option value="Besant Nagar">Besant Nagar</option>
+                </select>
+
+                <button type="submit">POST</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="pro-setting" id="pro-setting">
+    <div class="settings-container">
+        <div class="settings-header">
+            <h2>Profile Settings</h2>
+            <!-- <button onclick="closeSettings()">&times;</button> -->
+            <i id="close" style="top:-44px; left:12%;" onclick="closeSettings()" class="fa-solid fa-xmark"></i>
+        </div>
+
+        <form method="post" onsubmit="saveSettings(event)">
+            {% csrf_token %}
+            <div class="profile-pic">
+                <img src="{% static 'Assets/User-Profile-pic.jpg' %}" id="profilePicPreview" alt="Profile Picture">
+                <!-- <input type="file" id="profilePic" accept="image/*" onchange="previewProfilePic(event)"> -->
+                <label for="file-upload" class="custom-file-upload">
+                    Change Profile Picture
+                </label>
+                <input id="file-upload" type="file">
+            </div>
+            
+            <label for="userName">change Name:</label>
+            <input type="text" name="userName" id="userName" placeholder="{{ user.name }}">
+            <label for="userEmail">email:</label>
+            <input type="email" name="userEmail" id="userEmail" placeholder="{{ user.email}}" disabled>
+            <label for="userPassword">change Password:</label>
+            <input type="password" name="userPassword" id="userPassword" placeholder="New password">
+
+            <label for="userLocation">Location</label>
+            <select name="userLocation" id="userLocation">
+                <option value="">Select Location</option>
+                <option value="Adyar">Adyar</option>
+                <option value="Anna Nagar">Anna Nagar</option>
+                <option value="T. Nagar">T. Nagar</option>
+                <option value="Velachery">Velachery</option>
+                <option value="Kodambakkam">Kodambakkam</option>
+                <option value="Besant Nagar">Besant Nagar</option>
+            </select>
+
+            <button type="submit" class="save-button">Save Changes</button>
+        </form>
+    </div>
+</div>
+
+<div class="modal" id="statusModal"> 
+    <div class="modal-content" style="margin: 0px;">
+        <a onclick="closeupdate()"><i id="baby-close" class="fa-solid fa-xmark"></i></a> 
+        <h3 style="margin: 0px;">Update Baby Status</h3>
+        <select id="statusSelect">
+            <option value="Playing">Playing</option>
+            <option value="Feeding">Feeding</option>
+            <option value="Sleeping">Sleeping</option>
+        </select>
+        <textarea id="notesInput" placeholder="Additional Notes..."></textarea><br>
+        <label for="file-upload" class="custom-file-upload">
+            Upload baby current image or video
+        </label>
+        <input id="file-upload" type="file">
+        <button style="margin-top: 10px;" onclick="closeupdate()">Submit</button>
+    </div>
+</div>
+
+<div class="connection-reqst-list" id="connection-reqst-list">
+    <a onclick="closereqt()" class="connection-reqst-list-close"><i class="fa-solid fa-xmark"></i></a>
+    <h3><i class="fa-solid fa-link"></i>Connection Request</h3>
+    {% for post in posts %}
+        {% if post.accepter == 0 %}
+            {% for auth in authors %}
+                {% if post.creater == user.id %}
+                {% if auth.creater == user.id %}
+                {% if auth.status == 'request sended' %}
+                    <div class="connection-reqst" id="connection-reqst-1">
+                        {% for users in userdetail %}
+                            {% if users.id == auth.requests %}
+                                <p>{{users.name}}</p>
+                            {% endif %}
+                        {% endfor %}
+                        <form action="" method="post">
+                            {% csrf_token %}
+                            <div class="reqst-button" id="reqst-button-1">
+                                <input type="hidden" name="requestid" id="requestid" value="{{ auth.requests }}">
+                                <button type="submit" value="accept" name="acceptorrejectbutton" onclick="reqtaccpt('reqst-button-1','Request-chat-1')">Accept</button>
+                                <button type="submit" value="reject" name="acceptorrejectbutton" onclick="reqtReject('connection-reqst-1')">reject</button>
+                            </div>
+                        </form>
+                        <a class="Request-chat" onclick="showChat()"  id="Request-chat-1"><i class="fa-solid fa-message"></i>Chat</a>
+                    </div>
+                {% endif %}
+                {% endif %}
+                {% endif %}
+            {% endfor %}
+        {% else %}
+        <div class="connection-reqst" id="connection-reqst-1">
+            <p>No request Pending</p>
+            <a class="Request-chat" onclick="showChat()"  id="Request-chat-1"><i class="fa-solid fa-message"></i>Chat</a>
+        </div>
+        {% endif %}
+    {% endfor %}
+    <!-- <div class="connection-reqst" >
+        <p>jeni</p>
+        <div class="reqst-button" id="reqst-button-2">
+            <button onclick="reqtaccpt('reqst-button-2','Request-chat-2')">Accept</button>
+            <button onclick="reqtReject('connection-reqst-2')">reject</button>
+        </div>
+        <a class="Request-chat" onclick="showChat()"  id="Request-chat-2"><i class="fa-solid fa-message"></i>Chat</a>
+    </div>
+    <div class="connection-reqst" id="connection-reqst-3">
+        <p>Madhusha</p>
+        <div class="reqst-button" id="reqst-button-3">
+            <button onclick="reqtaccpt('reqst-button-3','Request-chat-3')">Accept</button>
+            <button onclick="reqtReject('connection-reqst-3')">reject</button>
+        </div>
+        <a class="Request-chat" onclick="showChat()" id="Request-chat-3"><i class="fa-solid fa-message"></i>Chat</a>
+    </div> -->
+</div>
+
+
+<div class="ser-nav-mob-bar" id="ser-nav-mob-bar">
+    <a id="ser-mob-nav-close"><i class="fa-solid fa-xmark" onclick="closeMobiNav()"></i></a>
+    <div class="slid-list">
+        <!-- <a href=""><i class="fa-solid fa-list-check"></i>Post Task </a> -->
+         <a onclick="showuDash()"><i class="fa-solid fa-chart-line"></i>Dashboard</a>
+        <a onclick="openreqt()"><i class="fa-solid fa-link"></i>Connection Requst</a>
+        <a onclick="closeMobiNav()" href="messager.html" id="massage"><i class="fa-solid fa-message"></i>Messages</a>
+        <a onclick="showuBabyUpdate()"><i class="fa-solid fa-baby-carriage"></i>Baby Status Update</a>
+    </div>
+    <div class="prof-settings">
+        <a onclick="openProSetting()" style="text-decoration: none; color:#ac74fc;" >
+            <i style="margin-right: 15px;" class="fa-solid fa-gear"></i>Profile Settings
+        </a>
+        <button onclick="document.location='index.html'" id="tasker-Logout-btn">
+            <h4 style="margin: 0px;"><i class="fa-solid fa-right-from-bracket"></i>LOGOUT</h4>
+        </button>
+    </div>
+</div>
+<!-- script -->
+<script src="{% static 'script.js' %}"></script>
+
+
+
+</body>
+</html>
