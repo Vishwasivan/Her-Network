@@ -53,10 +53,10 @@
                                 <input type="password" id="Upsw" name="Upsw" value="" required>
                             </td>
                         </tr>
-                        <tr>
+                        <tr id="error-msg">
                             <td>
                                 {% for m in messages %}
-                                <h6>{{ m }}</h6>
+                                <h6 >{{ m }}</h6>
                                 {% endfor %}
                             </td>
                         </tr>
@@ -75,7 +75,7 @@
             </div>
         </div>
         <div class="UR-login-img">
-            <img src="{% static 'Assets/BNG/Peachy_20241017_002638123.jpg' %}" alt="">
+            <img src="{% static 'Assets/login-new-IMG1.jpg' %}" alt="">
         </div>
     </div>
     <!-- script -->

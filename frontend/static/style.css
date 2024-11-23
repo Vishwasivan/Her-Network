@@ -21,7 +21,12 @@ body {
   border-radius: 30px;
   box-shadow: 5px 5px 15px;
 }
-
+#error-msg{
+  color: red;
+  font-size: medium;
+  font-weight: 900;
+  margin: 10px;
+}
 .UR-login {
   width: 50%;
   display: flex;
@@ -1376,9 +1381,34 @@ h3 {
 
 
 
-.iframchat{
-
+.auth-pop{
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
+.auth-pop-ele{
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+.auth-pop .modal-content{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+.auth-pop #baby-close{
+  top: -5px;
+  left: -5px;
+}
+
+
+
+
+
 
 @media only screen and (max-width: 980px) {
   .UR-login-img {
@@ -1627,6 +1657,14 @@ h3 {
   }
   .active-tittle #ser-nav-icon{
     display: block;
+  }
+
+  .auth-pop .modal-content{
+    padding: 10px;
+   
+  }
+  .auth-pop {
+    left: 45%;
   }
 }
 

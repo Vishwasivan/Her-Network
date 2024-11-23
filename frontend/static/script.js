@@ -257,6 +257,14 @@ function openConnection() {
     connectionlist.style.display = "flex";
     closeMobiNav()
 }
+function showAthu() {
+    const athuPop  = document.getElementById("auth-pop")
+    athuPop.style.display = "block";
+}
+function closdeAthu() {
+    const athuPop  = document.getElementById("auth-pop")
+    athuPop.style.display = "none";
+}
 
 function closereqt() {
     const connectionreqt = document.getElementById("connection-reqst-list")
