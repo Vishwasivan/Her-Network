@@ -140,8 +140,8 @@
             <div class="active-footer">
                 <div class="quvic-links" id="quvic-link">
                     <h2 style="margin: 0px;">Quick Links</h2>
-                    <button onclick="openServiceModal()">Post New Service</button>
-                    <button onclick="showAthu()">Authentication</button>
+                    <button  onclick="openServiceModal()">Post New Service</button>
+                    <button  onclick="showAthu()">Authentication</button>
                     <!-- <button onclick="listService()">List a Service</button> -->
                 </div>
 
@@ -166,6 +166,7 @@
             </div>
             <div class="prof-info">
 
+                
                 <div>
                     <img src="{% static 'Assets/Usser profile pic2.jpg' %}" alt="">
                     <h1 style="margin: 0px;">{{ user.name }}<i
@@ -210,7 +211,7 @@
 
         </div>
 
-
+        
     </div>
 
 
@@ -309,12 +310,12 @@
         <div class="modal-content" style="margin: 0px;">
             <a onclick="closeupdate()"><i id="baby-close" class="fa-solid fa-xmark"></i></a>
             <h3 style="margin: 0px;">Update Baby Status</h3>
-            <select id="statusSelect">
+            <select id="statusSelect" name="statusSelect">
                 <option value="Playing">Playing</option>
                 <option value="Feeding">Feeding</option>
                 <option value="Sleeping">Sleeping</option>
             </select>
-            <textarea id="notesInput" placeholder="Additional Notes..."></textarea><br>
+            <textarea id="notesInput" name="notesInput" placeholder="Additional Notes..."></textarea><br>
             <label for="file-upload" class="custom-file-upload">
                 Upload baby current image or video
             </label>
@@ -325,46 +326,44 @@
 
     <div class="connection-reqst-list" id="connection-reqst-list">
         <div class="connection-reqst-list" id="connection-reqst-list" style="display: flex;">
-            <a onclick="closereqt()" class="connection-reqst-list-close"><i class="fa-solid fa-xmark"></i></a>
-            <h3><i class="fa-solid fa-link"></i>Connection Request</h3>
-            {% for post in posts %}
-            {% if post.accepter == 0 %}
-            {% for auth in authors %}
-            {% if post.creater == user.id %}
-            {% if auth.creater == user.id %}
-            {% if auth.status == 'request sended' %}
-            <div class="connection-reqst" id="connection-reqst-1">
-                {% for users in userdetail %}
-                {% if users.id == auth.requests %}
-                <p>{{users.name}}</p>
-                {% endif %}
-                {% endfor %}
-                <form action="" method="post">
-                    {% csrf_token %}
-                    <div class="reqst-button" id="reqst-button-1">
-                        <input type="hidden" name="requestid" id="requestid" value="{{ auth.requests }}">
-                        <button type="submit" value="accept" name="acceptorrejectbutton"
-                            onclick="reqtaccpt('reqst-button-1','Request-chat-1')">Accept</button>
-                        <button type="submit" value="reject" name="acceptorrejectbutton"
-                            onclick="reqtReject('connection-reqst-1')">reject</button>
-                    </div>
-                </form>
-                <a class="Request-chat" onclick="showChat()" id="Request-chat-1"><i
-                        class="fa-solid fa-message"></i>Chat</a>
-            </div>
-            {% endif %}
-            {% endif %}
+        <a onclick="closereqt()" class="connection-reqst-list-close"><i class="fa-solid fa-xmark"></i></a>
+        <h3><i class="fa-solid fa-link"></i>Connection Request</h3>
+        {% for post in posts %}
+        {% if post.accepter == 0 %}
+        {% for auth in authors %}
+        {% if post.creater == user.id %}
+        {% if auth.creater == user.id %}
+        {% if auth.status == 'request sended' %}
+        <div class="connection-reqst" id="connection-reqst-1">
+            {% for users in userdetail %}
+            {% if users.id == auth.requests %}
+            <p>{{users.name}}</p>
             {% endif %}
             {% endfor %}
-            {% else %}
-            <div class="connection-reqst" id="connection-reqst-1">
-                <p>No request Pending</p>
-                <a class="Request-chat" onclick="showChat()" id="Request-chat-1"><i
-                        class="fa-solid fa-message"></i>Chat</a>
-            </div>
-            {% endif %}
-            {% endfor %}
+            <form action="" method="post">
+                {% csrf_token %}
+                <div class="reqst-button" id="reqst-button-1">
+                    <input type="hidden" name="requestid" id="requestid" value="{{ auth.requests }}">
+                    <button type="submit" value="accept" name="acceptorrejectbutton"
+                        onclick="reqtaccpt('reqst-button-1','Request-chat-1')">Accept</button>
+                    <button type="submit" value="reject" name="acceptorrejectbutton"
+                        onclick="reqtReject('connection-reqst-1')">reject</button>
+                </div>
+            </form>
+            <a class="Request-chat" onclick="showChat()" id="Request-chat-1"><i class="fa-solid fa-message"></i>Chat</a>
         </div>
+        {% endif %}
+        {% endif %}
+        {% endif %}
+        {% endfor %}
+        {% else %}
+        <div class="connection-reqst" id="connection-reqst-1">
+            <p>No request Pending</p>
+            <a class="Request-chat" onclick="showChat()" id="Request-chat-1"><i class="fa-solid fa-message"></i>Chat</a>
+        </div>
+        {% endif %}
+        {% endfor %}
+    </div>
     </div>
 
 
@@ -455,23 +454,22 @@
             <h3><i class="fa-solid fa-user-group"></i></i>Connection list</h3>
 
             {% for post in posts %}
-            {% if post.creater == user.id %}
-            {% if post.accepter != 0 %}
-            {% for users in userdetail %}
-            {% if users.id == post.accepter %}
-            <div class="connection-reqst" id="connection-reqst-1">
-
-                <div class="connection-reqst-name">
-                    <p>{{ user.name }}</p>
+                {% if post.creater == user.id %}
+                {% if post.accepter != 0 %}
+                {% for users in userdetail %}
+                {% if users.id == post.accepter %}
+                <div class="connection-reqst" id="connection-reqst-1">
+                
+                    <div class="connection-reqst-name">
+                        <p>{{ user.name }}</p>
+                    </div>
+                    <a href="https://wa.me/{{user.number}}" class="Request-chat" id="Request-chat-3"><i class="fa-solid fa-message"></i>Chat</a>
                 </div>
-                <a href="https://wa.me/{{user.number}}" class="Request-chat" id="Request-chat-3"><i
-                        class="fa-solid fa-message"></i>Chat</a>
-            </div>
-            {% endif %}
-            {% endfor %}
-            {% endif %}
-            {% endif %}
-            {% endfor %}
+                {% endif %}
+                {% endfor %}
+                {% endif %}
+                {% endif %}
+                {% endfor %}
         </div>
     </div>
 
