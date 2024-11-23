@@ -623,6 +623,13 @@ button:hover {
   font-size: larger;
   cursor: pointer;
 }
+.connection-list .connection-reqst .Request-chat {
+  display: flex;
+
+}
+.connection-list{
+  display: none;
+}
 
 .connection-reqst #Request-chat:hover {
   font-size: large;

@@ -31,7 +31,7 @@
                 <a><i class="fa-solid fa-baby-carriage"></i>Baby status</a>
                 <!-- <a><i class="fa-regular fa-bell"></i>Notification</a> -->
                 <a onclick="openConnection()"><i class="fa-solid fa-link"></i>Connection Status</a>
-                <a onclick="showChat()" id="massage"><i class="fa-solid fa-message"></i>Messages</a>
+                <a onclick="showChat()" id="massage"><i class="fa-solid fa-user-group" aria-hidden="true"></i>Connection list</a>
             </div>
             <div class="tasker-profile-settings">
                 <h3 onclick="openProSetting()"><i class="fa-solid fa-gear"></i>profile Settings</h3>
@@ -80,7 +80,6 @@
                 </div>
             </div>
             <div class="tasker-feeds">
-                
                 {% for post in posts %}
                     {% if post.accepter == 0 %}
                         <div class="post-box" id="tasker-feeds">
@@ -123,10 +122,10 @@
 
 
 
-    <div class="chat" id="chat" style="display: none;">
+    <!-- <div class="chat" id="chat" style="display: none;"> -->
 
         <!-- Sidebar (Chat List) -->
-        <div class="sidebar">
+        <!-- <div class="sidebar">
 
             <div class="sidebar-header">
                 <i id="close" onclick="closeChat()" class="fa-solid fa-xmark"></i>
@@ -149,12 +148,12 @@
                 </div>
             </div>
 
-        </div>
+        </div> -->
 
         <!-- Chat Window -->
-        <div class="chat-window">
+         <!-- <div class="chat-window">
             <div class="chat-header" id="chatHeader">Chat through Her-Network</div>
-            <!-- <div class="message-area" id="messageArea">
+           <div class="message-area" id="messageArea">
                 <div class="message sent">
                     <p>Hello!</p>
                     <span class="timestamp">10:30 AM</span>
@@ -167,10 +166,10 @@
             <div class="input-area">
                 <input type="text" id="messageInput" placeholder="Type a message..." />
                 <button class="send-button" onclick="sendMessage()">Send</button>
-            </div> -->
+            </div> 
             <iframe src="{% url 'chathome' %}" width="300px" height="500px"></iframe>
         </div>
-    </div>
+    </div>-->
 
 
     <div class="pro-setting" id="pro-setting">
@@ -311,7 +310,7 @@
             </div>
         </div>
     </div>
-<div style="
+<!-- <div style="
   position: absolute;
   top: 50%;
   left: 50%;
@@ -320,6 +319,34 @@
 ">
     <iframe src="{% url 'chathome' %}" width="300px" height="500px"></iframe>
 
+</div> -->
+
+<div class="connection-list" id="connection-list">
+    <div class="connection-reqst-list" id="connection-reqst-list" style="display: flex;">
+        <a onclick="closeChat()" class="connection-reqst-list-close"><i class="fa-solid fa-xmark"></i></a>
+        <h3><i class="fa-solid fa-user-group"></i></i>Connection list</h3>
+        <div class="connection-reqst" id="connection-reqst-1">
+            
+            <div class="connection-reqst-name">
+                <p>Bhavana</p>
+            </div>
+            
+            <a class="Request-chat"   id="Request-chat-1"><i class="fa-solid fa-message"></i>Chat</a>
+        </div>
+        <div class="connection-reqst" >
+            <div class="connection-reqst-name">
+                <p>Saranya</p>
+            </div>
+       
+            <a class="Request-chat"   id="Request-chat-2"><i class="fa-solid fa-message"></i>Chat</a>
+        </div>
+        <div class="connection-reqst" id="connection-reqst-3"> 
+            <div class="connection-reqst-name">
+                <p>Jeni</p>
+            </div>
+            <a class="Request-chat" id="Request-chat-3"><i class="fa-solid fa-message"></i>Chat</a>
+        </div>
+    </div>
 </div>
     
 

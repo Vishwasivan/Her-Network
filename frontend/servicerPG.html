@@ -34,7 +34,7 @@
                 <!-- <a href=""><i class="fa-solid fa-list-check"></i>Post Task </a> -->
                  <a onclick="showuDash()"><i class="fa-solid fa-chart-line"></i>Dashboard</a>
                 <a onclick="openreqt()"><i class="fa-solid fa-link"></i>Connection Request</a>
-                <a onclick="showChat()" id="massage"><i class="fa-solid fa-message"></i>Messages</a>
+                <a onclick="showChat()" id="massage"><i class="fa-solid fa-user-group"></i>Connection list</a>
                 <a href=""><i class="fa-regular fa-comment"></i>Feedback</a>
                 <a onclick="showuBabyUpdate()"><i class="fa-solid fa-baby-carriage"></i>Baby Status Update</a>
             </div>
@@ -204,9 +204,9 @@
         </div>
 
         <!-- Chat Window -->
-        <div class="chat-window">
+        <!-- <div class="chat-window">
             <iframe src="{% url 'chathome' %}" width="100%"></iframe>
-        </div>
+        </div> -->
     </div>
 
 
@@ -387,6 +387,93 @@
         <button onclick="document.location='index.html'" id="tasker-Logout-btn">
             <h4 style="margin: 0px;"><i class="fa-solid fa-right-from-bracket"></i>LOGOUT</h4>
         </button>
+    </div>
+</div>
+
+
+
+
+
+<div class="connection-reqst-list" id="connection-reqst-list">
+    <a onclick="closereqt()" class="connection-reqst-list-close"><i class="fa-solid fa-xmark"></i></a>
+    <h3><i class="fa-solid fa-link"></i>Connection Request</h3>
+    {% for post in posts %}
+        {% if post.accepter == 0 %}
+            {% for auth in authors %}
+                {% if post.creater == user.id %}
+                {% if auth.creater == user.id %}
+                {% if auth.status == 'request sended' %}
+                    <div class="connection-reqst" id="connection-reqst-1">
+                        {% for users in userdetail %}
+                            {% if users.id == auth.requests %}
+                                <p>{{users.name}}</p>
+                            {% endif %}
+                        {% endfor %}
+                        <form action="" method="post">
+                            {% csrf_token %}
+                            <div class="reqst-button" id="reqst-button-1">
+                                <input type="hidden" name="requestid" id="requestid" value="{{ auth.requests }}">
+                                <button type="submit" value="accept" name="acceptorrejectbutton" onclick="reqtaccpt('reqst-button-1','Request-chat-1')">Accept</button>
+                                <button type="submit" value="reject" name="acceptorrejectbutton" onclick="reqtReject('connection-reqst-1')">reject</button>
+                            </div>
+                        </form>
+                        <a class="Request-chat" onclick="showChat()"  id="Request-chat-1"><i class="fa-solid fa-message"></i>Chat</a>
+                    </div>
+                {% endif %}
+                {% endif %}
+                {% endif %}
+            {% endfor %}
+        {% else %}
+        <div class="connection-reqst" id="connection-reqst-1">
+            <p>No request Pending</p>
+            <a class="Request-chat" onclick="showChat()"  id="Request-chat-1"><i class="fa-solid fa-message"></i>Chat</a>
+        </div>
+        {% endif %}
+    {% endfor %}
+    <!-- <div class="connection-reqst" >
+        <p>jeni</p>
+        <div class="reqst-button" id="reqst-button-2">
+            <button onclick="reqtaccpt('reqst-button-2','Request-chat-2')">Accept</button>
+            <button onclick="reqtReject('connection-reqst-2')">reject</button>
+        </div>
+        <a class="Request-chat" onclick="showChat()"  id="Request-chat-2"><i class="fa-solid fa-message"></i>Chat</a>
+    </div>
+    <div class="connection-reqst" id="connection-reqst-3">
+        <p>Madhusha</p>
+        <div class="reqst-button" id="reqst-button-3">
+            <button onclick="reqtaccpt('reqst-button-3','Request-chat-3')">Accept</button>
+            <button onclick="reqtReject('connection-reqst-3')">reject</button>
+        </div>
+        <a class="Request-chat" onclick="showChat()" id="Request-chat-3"><i class="fa-solid fa-message"></i>Chat</a>
+    </div> -->
+</div>
+
+
+<div class="connection-list" id="connection-list">
+    <div class="connection-reqst-list" id="connection-reqst-list" style="display: flex;">
+        <a onclick="closeChat()" class="connection-reqst-list-close"><i class="fa-solid fa-xmark"></i></a>
+        <h3><i class="fa-solid fa-user-group"></i></i>Connection list</h3>
+        <div class="connection-reqst" id="connection-reqst-1">
+            
+            <div class="connection-reqst-name">
+                <p>Bhavana</p>
+            </div>
+            
+            <a class="Request-chat"   id="Request-chat-1"><i class="fa-solid fa-message"></i>Chat</a>
+        </div>
+        <div class="connection-reqst" >
+            <div class="connection-reqst-name">
+                <p>Saranya</p>
+            </div>
+       
+            <a class="Request-chat"   id="Request-chat-2"><i class="fa-solid fa-message"></i>Chat</a>
+        </div>
+        <div class="connection-reqst" id="connection-reqst-3"> 
+            <div class="connection-reqst-name">
+                <p>Jeni</p>
+            </div>
+            <a class="Request-chat" id="Request-chat-3"><i class="fa-solid fa-message"></i>Chat</a>
+        </div>
     </div>
 </div>
 <!-- script -->

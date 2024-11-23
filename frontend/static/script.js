@@ -18,7 +18,7 @@
 //     log.style.display = 'block';
 
 // }    
-   
+
 function aboutPGopen() {
     const aboutMain = document.getElementById("about-main")
     const welcomePG = document.getElementById("welcome-meg")
@@ -142,20 +142,20 @@ function sendMessage() {
     }
 }
 
-document.getElementById('messageInput').addEventListener('keydown', function (event) {
-    if (event.key === 'Enter') {
-        sendMessage();
-    }
-});
+// document.getElementById('messageInput').addEventListener('keydown', function (event) {
+//     if (event.key === 'Enter') {
+//         sendMessage();
+//     }
+// });
 
 function closeChat() {
-    const chatbox = document.getElementById('chat');
+    const chatbox = document.getElementById('connection-list');
     chatbox.style.display = 'none';
 }
 
 
 function showChat() {
-    document.getElementById('chat').style.display = 'flex';
+    document.getElementById('connection-list').style.display = 'block';
 }
 
 
