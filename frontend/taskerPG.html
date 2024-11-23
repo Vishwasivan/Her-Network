@@ -28,7 +28,7 @@
                 <h3>Her Network</h3>
             </div>
             <div class="tasker-side-nav">
-                <a><i class="fa-solid fa-baby-carriage"></i>Baby status</a>
+                <a onclick="openbabystatus()"><i class="fa-solid fa-baby-carriage"></i>Baby status</a>
                 <!-- <a><i class="fa-regular fa-bell"></i>Notification</a> -->
                 <a onclick="openConnection()"><i class="fa-solid fa-link"></i>Connection Status</a>
                 <a onclick="showChat()" id="massage"><i class="fa-solid fa-user-group" aria-hidden="true"></i>Connection list</a>
@@ -254,16 +254,7 @@
             </div>
         </div>
     </div>
-<!-- <div style="
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%,-50%);
-  background-color: white;
-">
-    <iframe src="{% url 'chathome' %}" width="300px" height="500px"></iframe>
 
-</div> -->
 
 <div class="connection-list" id="connection-list">
     <div class="connection-reqst-list" id="connection-reqst-list" style="display: flex;">
@@ -288,6 +279,50 @@
                 {% endfor %}
     </div>
 </div>
+
+
+
+<div class="babystatus" id="babystatus">
+    <div class="notivication">
+        <div class="babystatus-tittle">
+            <h2 style="margin: 0px;">Baby Status</h2>
+        </div>
+        
+        <div class="mgs">
+            
+            <p>Baby status Update of(10:00 AM).
+                <button onclick="dismissNotification(this)" fdprocessedid="aae6pa">Open</button>
+            </p>
+            <p>Baby status Update of(10:00 AM).
+                <button onclick="dismissNotification(this)" fdprocessedid="aae6pa">Open</button>
+            </p>
+            <p>Baby status Update of(10:00 AM).
+                <button onclick="dismissNotification(this)" fdprocessedid="aae6pa">Open</button>
+            </p>
+            <p>Baby status Update of(10:00 AM).
+                <button onclick="dismissNotification(this)" fdprocessedid="aae6pa">Open</button>
+            </p>
+            <p>Baby status Update of(10:00 AM).
+                <button onclick="dismissNotification(this)" fdprocessedid="aae6pa">Open</button>
+            </p>
+            <p>Baby status Update of(10:00 AM).
+                <button onclick="dismissNotification(this)" fdprocessedid="aae6pa">Open</button>
+            </p>
+            <p>Baby status Update of(10:00 AM).
+                <button onclick="dismissNotification(this)" fdprocessedid="aae6pa">Open</button>
+            </p>
+            <p>Baby status Update of(10:00 AM).
+                <button onclick="dismissNotification(this)" fdprocessedid="aae6pa">Open</button>
+            </p>
+            <p>Baby status Update of(10:00 AM).
+                <button onclick="dismissNotification(this)" fdprocessedid="aae6pa">Open</button>
+            </p>
+            
+        </div>
+    </div>
+</div>
+
+
     
 
     <!-- script -->

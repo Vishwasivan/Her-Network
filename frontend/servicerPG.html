@@ -140,7 +140,7 @@
             <div class="active-footer">
                 <div class="quvic-links" id="quvic-link">
                     <h2 style="margin: 0px;">Quick Links</h2>
-                    <button style="display: none;" onclick="openServiceModal()">Post New Service</button>
+                    <button  onclick="openServiceModal()">Post New Service</button>
                     <button  onclick="showAthu()">Authentication</button>
                     <!-- <button onclick="listService()">List a Service</button> -->
                 </div>
@@ -322,7 +322,7 @@
     </div>
 
     <div class="connection-reqst-list" id="connection-reqst-list">
-        <div class="connection-reqst-list" id="connection-reqst-list" style="display: flex;"></div>
+        <div class="connection-reqst-list" id="connection-reqst-list" style="display: flex;">
         <a onclick="closereqt()" class="connection-reqst-list-close"><i class="fa-solid fa-xmark"></i></a>
         <h3><i class="fa-solid fa-link"></i>Connection Request</h3>
         {% for post in posts %}

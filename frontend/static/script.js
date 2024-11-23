@@ -153,7 +153,6 @@ function closeChat() {
     chatbox.style.display = 'none';
 }
 
-
 function showChat() {
     document.getElementById('connection-list').style.display = 'block';
 }
@@ -246,7 +245,10 @@ function showuDash() {
 //     postBox.appendChild(postImg,postTitle,postLoc,postpri,postBtn)
 // }
 
-
+function openbabystatus() {
+    const babystatus = document.getElementById("babystatus")
+    babystatus.style.display = "block";
+}
 function closeConnection() {
     const connectionlist = document.getElementById("connection-status-list")
     connectionlist.style.display = "none";
